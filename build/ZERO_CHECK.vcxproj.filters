@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="D:\vscode_wokerspace\opengl_use1\build\CMakeFiles\0b55f715a87a9e06c8baa0beb986a954\generate.stamp.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{1C36CD46-0898-3200-9A33-0BD06F66E99F}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

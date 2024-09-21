@@ -1,0 +1,10 @@
+^D:\VSCODE_WOKERSPACE\OPENGL_USE1\BUILD\CMAKEFILES\0B55F715A87A9E06C8BAA0BEB986A954\GENERATE.STAMP.RULE
+setlocal
+D:\CMaKe\bin\cmake.exe -SD:/vscode_wokerspace/opengl_use1 -BD:/vscode_wokerspace/opengl_use1/build --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file D:/vscode_wokerspace/opengl_use1/build/Vulkan_workspace.sln
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
