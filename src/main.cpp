@@ -15,17 +15,20 @@ const unsigned int HEIGHT = 600;
 
 //顶点着色器与片元着色器
 const char *vertexShaderSource = "#version 460 core\n"           //版本号
-    "layout (location = 0) in vec3 aPos;\n"                      //设定了输入变量的位置值(Location)
+    "layout (location = 0) in vec3 aPos;\n"                      //位置变量的属性位置值为 0
+    "layout (location = 1) in vec3 aColor;\n"                    //颜色变量的属性位置值为 1
+    "out vec3 ourColor;\n"
     "void main()\n"
     "{\n"
-    "   gl_Position = vec4(aPos.x, aPos.y, aPos.z, 1.0);\n"      //顶点着色器的输出
+    "   gl_Position = vec4(aPos, 1.0);\n"      //顶点着色器的输出
+    "   ourColor = aColor;\n"                  //将ourColor设置为我们从顶点数据那里得到的输入颜色
     "}\0";
 const char *fragmentShaderSource = "#version 460 core\n"
     "out vec4 FragColor;\n"
-    "uniform vec4 ourColor;\n"                                     //全局变量，可在程序中设置
+    "in vec3 ourColor;\n"                                     //全局变量，可在程序中设置
     "void main()\n"
     "{\n"
-    "   FragColor = ourColor;\n"             //RGB和透明度
+    "   FragColor = vec4(ourColor, 1.0);\n"             //RGB和透明度
     "}\n\0";
 
 int main() {
@@ -94,21 +97,21 @@ int main() {
 
     //顶点输入
      float vertices[] = {
-         0.5f,  0.5f, 0.0f,  // top right
-         0.5f, -0.5f, 0.0f,  // bottom right
-        -0.5f, -0.5f, 0.0f,  // bottom left
-        -0.5f,  0.5f, 0.0f   // top left 
+        // 位置              // 颜色
+        0.5f, -0.5f, 0.0f,  1.0f, 0.0f, 0.0f,   // 右下
+       -0.5f, -0.5f, 0.0f,  0.0f, 1.0f, 0.0f,   // 左下
+        0.0f,  0.5f, 0.0f,  0.0f, 0.0f, 1.0f    // 顶部
     };
-    unsigned int indices[] = {  // 注意索引从0开始!
-        0, 1, 3,  // 第一个三角形
-        1, 2, 3   // 第二个三角形
-    };
+    // unsigned int indices[] = {  // 注意索引从0开始!
+    //     0, 1, 3,  // 第一个三角形
+    //     1, 2, 3   // 第二个三角形
+    // };
 
     //VAO存储顶点属性，VBO存储顶点数据
     unsigned int VBO, VAO,EBO;
     glGenVertexArrays(1, &VAO);
     glGenBuffers(1, &VBO);
-    glGenBuffers(1, &EBO);
+    //glGenBuffers(1, &EBO);
     //绑定VAO
     glBindVertexArray(VAO);
 
@@ -117,12 +120,16 @@ int main() {
     glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
 
     //把索引复制到缓冲里
-    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
-    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
+    // glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
+    // glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
 
     //设置顶点属性指针
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
+    //位置属性
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)0);
     glEnableVertexAttribArray(0);//启用顶点属性（默认禁用）
+    //颜色属性
+    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)(3* sizeof(float)));
+    glEnableVertexAttribArray(1);
 
     // 对 glVertexAttribPointer 的调用将 VBO 注册为顶点属性绑定的顶点缓冲对象，因此可以安全地取消绑定
     glBindBuffer(GL_ARRAY_BUFFER, 0); 
@@ -139,25 +146,24 @@ int main() {
         //渲染
         glClearColor(0.2f, 0.3f, 0.3f, 1.0f);//在新渲染前需要清屏
         glClear(GL_COLOR_BUFFER_BIT);
-        //画一个矩形
+        //画一个三角形
         glUseProgram(shaderProgram);//激活着色程序
 
-        double  timeValue = glfwGetTime();
-        float greenValue = static_cast<float>(sin(timeValue) / 2.0 + 0.5);
-        int vertexColorLocation = glGetUniformLocation(shaderProgram, "ourColor");
-        glUniform4f(vertexColorLocation, 0.0f, greenValue, 0.0f, 1.0f);
-        
+        // double  timeValue = glfwGetTime();
+        // float greenValue = static_cast<float>(sin(timeValue) / 2.0 + 0.5);
+        // int vertexColorLocation = glGetUniformLocation(shaderProgram, "ourColor");
+        // glUniform4f(vertexColorLocation, 0.0f, greenValue, 0.0f, 1.0f);
+
         glBindVertexArray(VAO); //目前只有一个VAO，不需要每次都绑定
-        glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);//绘制模式、顶点个数、索引类型、EBO偏移量
-        //glDrawArrays(GL_TRIANGLES, 0, 6);//第一个参数表示绘制类型（三角形），0表示起始索引，3表示顶点数
+        //glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);//绘制模式、顶点个数、索引类型、EBO偏移量
+        glDrawArrays(GL_TRIANGLES, 0, 3);//第一个参数表示绘制类型（三角形），0表示起始索引，3表示顶点数
 
         //检查并调用事件，交换缓冲
         glfwSwapBuffers(window);//交换颜色缓冲，用来绘制
         glfwPollEvents();//检查有没有触发什么事件（比如键盘输入、鼠标移动等）、更新窗口状态，并调用对应的回调函数    
     }
 
-    // optional: de-allocate all resources once they've outlived their purpose:
-    // ------------------------------------------------------------------------
+    //释放资源
     glDeleteVertexArrays(1, &VAO);
     glDeleteBuffers(1, &VBO);
     glDeleteBuffers(1, &EBO);
