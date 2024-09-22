@@ -173,9 +173,9 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </ProjectReference>
-    <ProjectReference Include="D:\vscode_wokerspace\opengl_use1\build\Vulkan_workspace.vcxproj">
-      <Project>{3171936B-8FAA-3FA8-91FE-2332CB2EE7A4}</Project>
-      <Name>Vulkan_workspace</Name>
+    <ProjectReference Include="D:\vscode_wokerspace\opengl_use1\build\Opengl_workspace.vcxproj">
+      <Project>{ABDE3FAB-18A5-34B9-8C1C-A4B577938242}</Project>
+      <Name>Opengl_workspace</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

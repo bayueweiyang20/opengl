@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.10)
 
 # 项目名称和版本
-project(Vulkan_workspace VERSION 1.0)
+project(Opengl_workspace VERSION 1.0)
 
 # 指定 C++ 标准
 set(CMAKE_CXX_STANDARD 20)
@@ -20,10 +20,10 @@ file(GLOB SOURCES ${PROJECT_SOURCE_DIR}/src/*.cpp)
 #add_library(glad src/glad.c)
 
 # 添加可执行文件（main.cpp 包含在 SOURCES 中，自动作为入口点）
-add_executable(Vulkan_workspace ${SOURCES})
+add_executable(Opengl_workspace ${SOURCES})
 
 # 链接 Vulkan、GLFW 和 GLM 库
-target_link_libraries(Vulkan_workspace PRIVATE Vulkan::Vulkan glfw glm::glm glad::glad)
+target_link_libraries(Opengl_workspace PRIVATE Vulkan::Vulkan glfw glm::glm glad::glad)
 
 # 指定包含目录(include 目录中存放 .hpp 文件)
-target_include_directories(Vulkan_workspace PRIVATE ${PROJECT_SOURCE_DIR}/include)
+target_include_directories(Opengl_workspace PRIVATE ${PROJECT_SOURCE_DIR}/include)

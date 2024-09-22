@@ -77,7 +77,7 @@ CMAKE_EXE_LINKER_FLAGS_RELWITHDEBINFO:STRING=/debug /INCREMENTAL
 CMAKE_FIND_PACKAGE_REDIRECTS_DIR:STATIC=D:/vscode_wokerspace/opengl_use1/build/CMakeFiles/pkgRedirects
 
 //Install path prefix, prepended onto install directories.
-CMAKE_INSTALL_PREFIX:PATH=C:/Program Files (x86)/Vulkan_workspace
+CMAKE_INSTALL_PREFIX:PATH=C:/Program Files (x86)/Opengl_workspace
 
 //Path to a program.
 CMAKE_LINKER:FILEPATH=C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.37.32822/bin/Hostx64/x64/link.exe
@@ -112,7 +112,7 @@ CMAKE_PROJECT_DESCRIPTION:STATIC=
 CMAKE_PROJECT_HOMEPAGE_URL:STATIC=
 
 //Value Computed by CMake
-CMAKE_PROJECT_NAME:STATIC=Vulkan_workspace
+CMAKE_PROJECT_NAME:STATIC=Opengl_workspace
 
 //Value Computed by CMake
 CMAKE_PROJECT_VERSION:STATIC=1.0
@@ -203,6 +203,15 @@ CMAKE_TOOLCHAIN_FILE:FILEPATH=D:/vcpkg/home/scripts/buildsystems/vcpkg.cmake
 // Studio IDE projects all commands are done without /nologo.
 CMAKE_VERBOSE_MAKEFILE:BOOL=FALSE
 
+//Value Computed by CMake
+Opengl_workspace_BINARY_DIR:STATIC=D:/vscode_wokerspace/opengl_use1/build
+
+//Value Computed by CMake
+Opengl_workspace_IS_TOP_LEVEL:STATIC=ON
+
+//Value Computed by CMake
+Opengl_workspace_SOURCE_DIR:STATIC=D:/vscode_wokerspace/opengl_use1
+
 //Automatically copy dependencies into the output directory for
 // executables.
 VCPKG_APPLOCAL_DEPS:BOOL=ON
@@ -245,15 +254,6 @@ Vulkan_INCLUDE_DIR:PATH=D:/VulKanSDK/home/Include
 
 //Path to a library.
 Vulkan_LIBRARY:FILEPATH=D:/VulKanSDK/home/Lib/vulkan-1.lib
-
-//Value Computed by CMake
-Vulkan_workspace_BINARY_DIR:STATIC=D:/vscode_wokerspace/opengl_use1/build
-
-//Value Computed by CMake
-Vulkan_workspace_IS_TOP_LEVEL:STATIC=ON
-
-//Value Computed by CMake
-Vulkan_workspace_SOURCE_DIR:STATIC=D:/vscode_wokerspace/opengl_use1
 
 //(experimental) Automatically copy dependencies into the install
 // target directory for executables. Requires CMake 3.14.
