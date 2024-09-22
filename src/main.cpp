@@ -15,15 +15,18 @@ const unsigned int HEIGHT = 600;
 //顶点着色器与片元着色器
 const char *vertexShaderSource = "#version 460 core\n"           //版本号
     "layout (location = 0) in vec3 aPos;\n"                      //设定了输入变量的位置值(Location)
+    "out vec4 vertexColor;\n"                                    //为片段着色器指定一个颜色输出
     "void main()\n"
     "{\n"
     "   gl_Position = vec4(aPos.x, aPos.y, aPos.z, 1.0);\n"      //顶点着色器的输出
+    "   vertexColor = vec4(0.5, 0.0, 0.0, 1.0);\n"               //把输出变量设置为暗红色
     "}\0";
 const char *fragmentShaderSource = "#version 460 core\n"
     "out vec4 FragColor;\n"
+    "in vec4 vertexColor;\n"                                     //从顶点着色器传来的输入变量（名称相同、类型相同）
     "void main()\n"
     "{\n"
-    "   FragColor = vec4(1.0f, 0.5f, 0.2f, 1.0f);\n"             //RGB和透明度
+    "   FragColor = vertexColor;\n"             //RGB和透明度
     "}\n\0";
 
 int main() {
