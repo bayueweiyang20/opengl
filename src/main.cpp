@@ -1,6 +1,7 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 #include <iostream>
+#include <cmath>
 
 //回调函数，在每次窗口大小被调整的时候被调用，使视口大小跟随窗口大小变化
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
@@ -15,18 +16,16 @@ const unsigned int HEIGHT = 600;
 //顶点着色器与片元着色器
 const char *vertexShaderSource = "#version 460 core\n"           //版本号
     "layout (location = 0) in vec3 aPos;\n"                      //设定了输入变量的位置值(Location)
-    "out vec4 vertexColor;\n"                                    //为片段着色器指定一个颜色输出
     "void main()\n"
     "{\n"
     "   gl_Position = vec4(aPos.x, aPos.y, aPos.z, 1.0);\n"      //顶点着色器的输出
-    "   vertexColor = vec4(0.5, 0.0, 0.0, 1.0);\n"               //把输出变量设置为暗红色
     "}\0";
 const char *fragmentShaderSource = "#version 460 core\n"
     "out vec4 FragColor;\n"
-    "in vec4 vertexColor;\n"                                     //从顶点着色器传来的输入变量（名称相同、类型相同）
+    "uniform vec4 ourColor;\n"                                     //全局变量，可在程序中设置
     "void main()\n"
     "{\n"
-    "   FragColor = vertexColor;\n"             //RGB和透明度
+    "   FragColor = ourColor;\n"             //RGB和透明度
     "}\n\0";
 
 int main() {
@@ -142,6 +141,12 @@ int main() {
         glClear(GL_COLOR_BUFFER_BIT);
         //画一个矩形
         glUseProgram(shaderProgram);//激活着色程序
+
+        double  timeValue = glfwGetTime();
+        float greenValue = static_cast<float>(sin(timeValue) / 2.0 + 0.5);
+        int vertexColorLocation = glGetUniformLocation(shaderProgram, "ourColor");
+        glUniform4f(vertexColorLocation, 0.0f, greenValue, 0.0f, 1.0f);
+        
         glBindVertexArray(VAO); //目前只有一个VAO，不需要每次都绑定
         glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);//绘制模式、顶点个数、索引类型、EBO偏移量
         //glDrawArrays(GL_TRIANGLES, 0, 6);//第一个参数表示绘制类型（三角形），0表示起始索引，3表示顶点数
