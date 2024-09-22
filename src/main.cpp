@@ -18,9 +18,10 @@ const char *vertexShaderSource = "#version 460 core\n"           //版本号
     "layout (location = 0) in vec3 aPos;\n"                      //位置变量的属性位置值为 0
     "layout (location = 1) in vec3 aColor;\n"                    //颜色变量的属性位置值为 1
     "out vec3 ourColor;\n"
+    "uniform vec2 xy;\n"
     "void main()\n"
     "{\n"
-    "   gl_Position = vec4(aPos, 1.0);\n"      //顶点着色器的输出
+    "   gl_Position = vec4(aPos.x + xy.x, aPos.y + xy.y, aPos.z, 1.0);\n"      //顶点着色器的输出
     "   ourColor = aColor;\n"                  //将ourColor设置为我们从顶点数据那里得到的输入颜色
     "}\0";
 const char *fragmentShaderSource = "#version 460 core\n"
@@ -149,10 +150,11 @@ int main() {
         //画一个三角形
         glUseProgram(shaderProgram);//激活着色程序
 
-        // double  timeValue = glfwGetTime();
-        // float greenValue = static_cast<float>(sin(timeValue) / 2.0 + 0.5);
-        // int vertexColorLocation = glGetUniformLocation(shaderProgram, "ourColor");
-        // glUniform4f(vertexColorLocation, 0.0f, greenValue, 0.0f, 1.0f);
+        double  timeValue = glfwGetTime();
+        float xValue = static_cast<float>(sin(timeValue) / 2.0f);
+        float yValue = static_cast<float>(cos(timeValue) / 2.0f);
+        int vertexXYLocation = glGetUniformLocation(shaderProgram, "xy");
+        glUniform2f(vertexXYLocation, xValue, yValue);
 
         glBindVertexArray(VAO); //目前只有一个VAO，不需要每次都绑定
         //glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);//绘制模式、顶点个数、索引类型、EBO偏移量
