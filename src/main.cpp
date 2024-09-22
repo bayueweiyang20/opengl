@@ -27,9 +27,10 @@ const char *vertexShaderSource = "#version 460 core\n"           //版本号
 const char *fragmentShaderSource = "#version 460 core\n"
     "out vec4 FragColor;\n"
     "in vec3 ourColor;\n"                                     //全局变量，可在程序中设置
+    "uniform vec3 rgb;\n"
     "void main()\n"
     "{\n"
-    "   FragColor = vec4(ourColor, 1.0);\n"             //RGB和透明度
+    "   FragColor = vec4(ourColor + rgb, 1.0);\n"             //RGB和透明度
     "}\n\0";
 
 int main() {
@@ -99,9 +100,9 @@ int main() {
     //顶点输入
      float vertices[] = {
         // 位置              // 颜色
-        0.5f, -0.5f, 0.0f,  1.0f, 0.0f, 0.0f,   // 右下
-       -0.5f, -0.5f, 0.0f,  0.0f, 1.0f, 0.0f,   // 左下
-        0.0f,  0.5f, 0.0f,  0.0f, 0.0f, 1.0f    // 顶部
+        0.5f, -0.5f, 0.0f,  0.5f, 0.0f, 0.0f,   // 右下
+       -0.5f, -0.5f, 0.0f,  0.0f, 0.5f, 0.0f,   // 左下
+        0.0f,  0.5f, 0.0f,  0.0f, 0.0f, 0.5f    // 顶部
     };
     // unsigned int indices[] = {  // 注意索引从0开始!
     //     0, 1, 3,  // 第一个三角形
@@ -155,6 +156,11 @@ int main() {
         float yValue = static_cast<float>(cos(timeValue) / 2.0f);
         int vertexXYLocation = glGetUniformLocation(shaderProgram, "xy");
         glUniform2f(vertexXYLocation, xValue, yValue);
+        float rValue = static_cast<float>(sin(timeValue) / 2.0f);
+        float gValue = static_cast<float>(sin(timeValue) / 2.0f);
+        float bValue = static_cast<float>(sin(timeValue) / 2.0f);
+        int vertexRGBLocation = glGetUniformLocation(shaderProgram, "rgb");
+        glUniform3f(vertexRGBLocation, rValue, gValue, bValue);
 
         glBindVertexArray(VAO); //目前只有一个VAO，不需要每次都绑定
         //glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);//绘制模式、顶点个数、索引类型、EBO偏移量
