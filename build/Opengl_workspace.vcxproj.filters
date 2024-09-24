@@ -4,6 +4,9 @@
     <ClCompile Include="D:\vscode_wokerspace\opengl_use1\src\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="D:\vscode_wokerspace\opengl_use1\src\shader_s.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="D:\vscode_wokerspace\opengl_use1\CMakeLists.txt" />

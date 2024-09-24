@@ -390,6 +390,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="D:\vscode_wokerspace\opengl_use1\src\main.cpp" />
+    <ClCompile Include="D:\vscode_wokerspace\opengl_use1\src\shader_s.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="D:\vscode_wokerspace\opengl_use1\build\ZERO_CHECK.vcxproj">
