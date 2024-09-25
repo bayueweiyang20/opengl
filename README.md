@@ -49,4 +49,4 @@ unsigned char *data = stbi_load("container.jpg", &width, &height, &nrChannels, 0
 问题3：尝试在矩形上只显示纹理图像的中间一部分，修改纹理坐标，达到能看见单个的像素的效果。尝试使用GL_NEAREST的纹理过滤方式让像素显示得更清晰  
 答案：这个比较简单，只需要修改纹理坐标，范围小一点就行，我调整成0.49、0.51，然后用GL_NEAREST的纹理过滤方式就好了。  
 问题4：使用一个uniform变量作为mix函数的第三个参数来改变两个纹理可见度，使用上和下键来改变箱子或笑脸的可见度  
-答案：
+答案：在片段着色器中定义一个uniform float的mixValue作为混合度并在mix函数中使用，在程序中也定义一个mixValue用于修改混合度，修改的方法是使用输入函数processInput，在该函数中添加输入判断来修改mixValue。  

@@ -16,6 +16,9 @@ void processInput(GLFWwindow *window);
 const unsigned int WIDTH = 800;
 const unsigned int HEIGHT = 600;
 
+// 混合的第二个纹理透明度
+float mixValue = 0.2f;
+
 int main() {
 
     glfwInit(); // 初始化GLFW，为后续GLFW操作做全局设置
@@ -45,10 +48,10 @@ int main() {
     //顶点输入
     float vertices[] = {
          // 位置               // 颜色             // 纹理
-         0.5f,  0.5f, 0.0f,   1.0f, 0.0f, 0.0f,   0.51f, 0.51f, // 右上
-         0.5f, -0.5f, 0.0f,   0.0f, 1.0f, 0.0f,   0.51f, 0.49f, // 右下
-        -0.5f, -0.5f, 0.0f,   0.0f, 0.0f, 1.0f,   0.49f, 0.49f, // 左下
-        -0.5f,  0.5f, 0.0f,   1.0f, 1.0f, 0.0f,   0.49f, 0.51f  // 左上 
+         0.5f,  0.5f, 0.0f,   1.0f, 0.0f, 0.0f,   1.0f, 1.0f, // 右上
+         0.5f, -0.5f, 0.0f,   0.0f, 1.0f, 0.0f,   1.0f, 0.0f, // 右下
+        -0.5f, -0.5f, 0.0f,   0.0f, 0.0f, 1.0f,   0.0f, 0.0f, // 左下
+        -0.5f,  0.5f, 0.0f,   1.0f, 1.0f, 0.0f,   0.0f, 1.0f  // 左上 
     };
     unsigned int indices[] = {  // 注意索引从0开始!
         0, 1, 3,  // 第一个三角形
@@ -153,10 +156,14 @@ int main() {
         glBindTexture(GL_TEXTURE_2D, texture1);
         glActiveTexture(GL_TEXTURE1);
         glBindTexture(GL_TEXTURE_2D, texture2);
+
+        // set the texture mix value in the shader
+        ourShader.setFloat("mixValue", mixValue);
+
         // 画一个三角形
         ourShader.use(); // 激活着色程序
 
-        double  timeValue = glfwGetTime();
+        // double  timeValue = glfwGetTime();
         // float xValue = static_cast<float>(sin(timeValue) / 2.0f);
         // float yValue = static_cast<float>(cos(timeValue) / 2.0f);
         // int vertexXYLocation = glGetUniformLocation(ourShader.ID, "xy");
@@ -194,6 +201,19 @@ void framebuffer_size_callback(GLFWwindow* window, int width, int height)
 
 void processInput(GLFWwindow *window)
 {
-    if(glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
+    if(glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS) // 退出键判断
         glfwSetWindowShouldClose(window, true);
+
+     if (glfwGetKey(window, GLFW_KEY_UP) == GLFW_PRESS)
+    {
+        mixValue += 0.002f; // 增加二纹理透明度，该值为变化速度
+        if(mixValue >= 1.0f)
+            mixValue = 1.0f;
+    }
+    if (glfwGetKey(window, GLFW_KEY_DOWN) == GLFW_PRESS)
+    {
+        mixValue -= 0.002f; // 减少二纹理透明度
+        if (mixValue <= 0.0f)
+            mixValue = 0.0f;
+    }
 }
