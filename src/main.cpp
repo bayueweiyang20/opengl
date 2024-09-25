@@ -84,16 +84,17 @@ int main() {
     glEnableVertexAttribArray(2);
 
     // 加载和创建纹理
-    unsigned int texture;
-    glGenTextures(1, &texture); // ID引用
-    glBindTexture(GL_TEXTURE_2D, texture); // 绑定该纹理
+    unsigned int texture1,texture2;
+    glGenTextures(1, &texture1); // ID引用
+    glBindTexture(GL_TEXTURE_2D, texture1); // 绑定该纹理
     // 为当前绑定的纹理对象设置环绕、过滤方式
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);   
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-    // 加载并生成纹理
+    // 加载并生成纹理1
     int width, height, nrChannels;
+    stbi_set_flip_vertically_on_load(true); // OpenGL和图片定义的y轴是反的，所以我们这里需要翻个方向
     unsigned char *data = stbi_load("./images/container.jpg", &width, &height, &nrChannels, 0);
     if (data)
     {
@@ -104,7 +105,32 @@ int main() {
     {
         std::cout << "Failed to load texture" << std::endl;
     }
+    // 加载并生成纹理2
+    glGenTextures(1, &texture2); // ID引用
+    glBindTexture(GL_TEXTURE_2D, texture2); // 绑定该纹理
+    // 为当前绑定的纹理对象设置环绕、过滤方式
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);   
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    data = stbi_load("./images/awesomeface.png", &width, &height, &nrChannels, 0);
+    if (data)
+    {
+        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data); // 这里使用GL_RGBA，多一个透明度
+        glGenerateMipmap(GL_TEXTURE_2D);
+    }
+    else
+    {
+        std::cout << "Failed to load texture" << std::endl;
+    }
     stbi_image_free(data);
+
+    // 定义哪个uniform采样器对应哪个纹理单元
+    ourShader.use(); // 不要忘记在设置uniform变量之前激活着色器程序！
+    // 手动设置
+    glUniform1i(glGetUniformLocation(ourShader.ID, "texture1"), 0);
+    // 或者使用着色器类设置
+    ourShader.setInt("texture2", 1);
 
     // 对 glVertexAttribPointer 的调用将 VBO 注册为顶点属性绑定的顶点缓冲对象，因此可以安全地取消绑定
     glBindBuffer(GL_ARRAY_BUFFER, 0); 
@@ -122,8 +148,11 @@ int main() {
         glClearColor(0.2f, 0.3f, 0.3f, 1.0f); // 在新渲染前需要清屏
         glClear(GL_COLOR_BUFFER_BIT);
 
-        // 绑定纹理
-        glBindTexture(GL_TEXTURE_2D, texture);
+        // 绑定多个纹理
+        glActiveTexture(GL_TEXTURE0);
+        glBindTexture(GL_TEXTURE_2D, texture1);
+        glActiveTexture(GL_TEXTURE1);
+        glBindTexture(GL_TEXTURE_2D, texture2);
         // 画一个三角形
         ourShader.use(); // 激活着色程序
 
