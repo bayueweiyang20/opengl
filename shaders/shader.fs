@@ -8,6 +8,7 @@ in vec2 TexCoord;
 uniform sampler2D texture1; // 采样器
 uniform sampler2D texture2; // 采样器
 
+
 void main()
 {
    //FragColor = texture(ourTexture, TexCoord);  //采样纹理的颜色

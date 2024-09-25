@@ -45,10 +45,10 @@ int main() {
     //顶点输入
     float vertices[] = {
          // 位置               // 颜色             // 纹理
-         0.5f,  0.5f, 0.0f,   1.0f, 0.0f, 0.0f,   2.0f, 2.0f, // 右上
-         0.5f, -0.5f, 0.0f,   0.0f, 1.0f, 0.0f,   2.0f, 0.0f, // 右下
-        -0.5f, -0.5f, 0.0f,   0.0f, 0.0f, 1.0f,   0.0f, 0.0f, // 左下
-        -0.5f,  0.5f, 0.0f,   1.0f, 1.0f, 0.0f,   0.0f, 2.0f  // 左上 
+         0.5f,  0.5f, 0.0f,   1.0f, 0.0f, 0.0f,   0.51f, 0.51f, // 右上
+         0.5f, -0.5f, 0.0f,   0.0f, 1.0f, 0.0f,   0.51f, 0.49f, // 右下
+        -0.5f, -0.5f, 0.0f,   0.0f, 0.0f, 1.0f,   0.49f, 0.49f, // 左下
+        -0.5f,  0.5f, 0.0f,   1.0f, 1.0f, 0.0f,   0.49f, 0.51f  // 左上 
     };
     unsigned int indices[] = {  // 注意索引从0开始!
         0, 1, 3,  // 第一个三角形
@@ -90,8 +90,8 @@ int main() {
     // 为当前绑定的纹理对象设置环绕、过滤方式
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);   
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
     // 加载并生成纹理1
     int width, height, nrChannels;
     stbi_set_flip_vertically_on_load(true); // OpenGL和图片定义的y轴是反的，所以我们这里需要翻个方向
@@ -111,8 +111,8 @@ int main() {
     // 为当前绑定的纹理对象设置环绕、过滤方式
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_MIRRORED_REPEAT);   
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_MIRRORED_REPEAT);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
     data = stbi_load("./images/awesomeface.png", &width, &height, &nrChannels, 0);
     if (data)
     {
@@ -156,7 +156,7 @@ int main() {
         // 画一个三角形
         ourShader.use(); // 激活着色程序
 
-        // double  timeValue = glfwGetTime();
+        double  timeValue = glfwGetTime();
         // float xValue = static_cast<float>(sin(timeValue) / 2.0f);
         // float yValue = static_cast<float>(cos(timeValue) / 2.0f);
         // int vertexXYLocation = glGetUniformLocation(ourShader.ID, "xy");

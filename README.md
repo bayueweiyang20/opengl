@@ -46,3 +46,7 @@ unsigned char *data = stbi_load("container.jpg", &width, &height, &nrChannels, 0
 答案：修改片段着色器（我第一个尝试就是这个，可惜没成功）， FragColor = mix(texture(ourTexture1, TexCoord), texture(ourTexture2, vec2(1.0 - TexCoord.x, TexCoord.y)), 0.2)。  
 问题2：用不同的纹理环绕方式，设定一个从0.0f到2.0f范围内纹理坐标，在箱子的角落放置4个笑脸  
 答案：在顶点数据中将纹理坐标中的1.0修改为2.0，另外还修改了两个纹理的环绕方式。  
+问题3：尝试在矩形上只显示纹理图像的中间一部分，修改纹理坐标，达到能看见单个的像素的效果。尝试使用GL_NEAREST的纹理过滤方式让像素显示得更清晰  
+答案：这个比较简单，只需要修改纹理坐标，范围小一点就行，我调整成0.49、0.51，然后用GL_NEAREST的纹理过滤方式就好了。  
+问题4：使用一个uniform变量作为mix函数的第三个参数来改变两个纹理可见度，使用上和下键来改变箱子或笑脸的可见度  
+答案：
