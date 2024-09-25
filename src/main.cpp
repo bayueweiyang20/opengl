@@ -1,5 +1,10 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
+
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
+
 #include <iostream>
 #include <cmath>
 
@@ -157,11 +162,19 @@ int main() {
         glActiveTexture(GL_TEXTURE1);
         glBindTexture(GL_TEXTURE_2D, texture2);
 
-        // set the texture mix value in the shader
+        // 设置混合度
         ourShader.setFloat("mixValue", mixValue);
+
+        // 生成变换
+        glm::mat4 transform = glm::mat4(1.0f); 
+        transform = glm::translate(transform, glm::vec3(0.5f, -0.5f, 0.0f)); // 位移
+        transform = glm::rotate(transform, (float)glfwGetTime(), glm::vec3(0.0f, 0.0f, 1.0f)); // 旋转，角度随时间变化
 
         // 画一个三角形
         ourShader.use(); // 激活着色程序
+
+        unsigned int transformLoc = glGetUniformLocation(ourShader.ID, "transform");
+        glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(transform));
 
         // double  timeValue = glfwGetTime();
         // float xValue = static_cast<float>(sin(timeValue) / 2.0f);
