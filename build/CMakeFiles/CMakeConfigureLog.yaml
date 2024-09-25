@@ -24,7 +24,7 @@ events:
       The output was:
       0
       适用于 .NET Framework MSBuild 版本 17.7.2+d6990bcfa
-      生成启动时间为 2024/9/24 21:21:40。
+      生成启动时间为 2024/9/25 14:41:17。
       
       节点 1 上的项目“D:\\vscode_wokerspace\\opengl_use1\\build\\CMakeFiles\\3.30.0\\CompilerIdC\\CompilerIdC.vcxproj”(默认目标)。
       PrepareForBuild:
@@ -52,7 +52,7 @@ events:
           0 个警告
           0 个错误
       
-      已用时间 00:00:00.56
+      已用时间 00:00:00.68
       
       
       Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CompilerIdC.exe"
@@ -78,7 +78,7 @@ events:
       The output was:
       0
       适用于 .NET Framework MSBuild 版本 17.7.2+d6990bcfa
-      生成启动时间为 2024/9/24 21:21:40。
+      生成启动时间为 2024/9/25 14:41:18。
       
       节点 1 上的项目“D:\\vscode_wokerspace\\opengl_use1\\build\\CMakeFiles\\3.30.0\\CompilerIdCXX\\CompilerIdCXX.vcxproj”(默认目标)。
       PrepareForBuild:
@@ -106,7 +106,7 @@ events:
           0 个警告
           0 个错误
       
-      已用时间 00:00:00.42
+      已用时间 00:00:00.47
       
       
       Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CompilerIdCXX.exe"
@@ -125,8 +125,8 @@ events:
     checks:
       - "Detecting C compiler ABI info"
     directories:
-      source: "D:/vscode_wokerspace/opengl_use1/build/CMakeFiles/CMakeScratch/TryCompile-je58ty"
-      binary: "D:/vscode_wokerspace/opengl_use1/build/CMakeFiles/CMakeScratch/TryCompile-je58ty"
+      source: "D:/vscode_wokerspace/opengl_use1/build/CMakeFiles/CMakeScratch/TryCompile-m1g1j6"
+      binary: "D:/vscode_wokerspace/opengl_use1/build/CMakeFiles/CMakeScratch/TryCompile-m1g1j6"
     cmakeVariables:
       CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS /W3"
       CMAKE_C_FLAGS_DEBUG: "/MDd /Zi /Ob0 /Od /RTC1"
@@ -139,39 +139,39 @@ events:
       variable: "CMAKE_C_ABI_COMPILED"
       cached: true
       stdout: |
-        Change Dir: 'D:/vscode_wokerspace/opengl_use1/build/CMakeFiles/CMakeScratch/TryCompile-je58ty'
+        Change Dir: 'D:/vscode_wokerspace/opengl_use1/build/CMakeFiles/CMakeScratch/TryCompile-m1g1j6'
         
-        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_91715.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_9c730.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
         适用于 .NET Framework MSBuild 版本 17.7.2+d6990bcfa
-        生成启动时间为 2024/9/24 21:21:41。
+        生成启动时间为 2024/9/25 14:41:19。
         
-        节点 1 上的项目“D:\\vscode_wokerspace\\opengl_use1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-je58ty\\cmTC_91715.vcxproj”(默认目标)。
+        节点 1 上的项目“D:\\vscode_wokerspace\\opengl_use1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-m1g1j6\\cmTC_9c730.vcxproj”(默认目标)。
         PrepareForBuild:
-          正在创建目录“cmTC_91715.dir\\Debug\\”。
-          正在创建目录“D:\\vscode_wokerspace\\opengl_use1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-je58ty\\Debug\\”。
-          正在创建目录“cmTC_91715.dir\\Debug\\cmTC_91715.tlog\\”。
+          正在创建目录“cmTC_9c730.dir\\Debug\\”。
+          正在创建目录“D:\\vscode_wokerspace\\opengl_use1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-m1g1j6\\Debug\\”。
+          正在创建目录“cmTC_9c730.dir\\Debug\\cmTC_9c730.tlog\\”。
         InitializeBuildStatus:
-          正在创建“cmTC_91715.dir\\Debug\\cmTC_91715.tlog\\unsuccessfulbuild”，因为已指定“AlwaysCreate”。
-          正在对“cmTC_91715.dir\\Debug\\cmTC_91715.tlog\\unsuccessfulbuild”执行 Touch 任务。
+          正在创建“cmTC_9c730.dir\\Debug\\cmTC_9c730.tlog\\unsuccessfulbuild”，因为已指定“AlwaysCreate”。
+          正在对“cmTC_9c730.dir\\Debug\\cmTC_9c730.tlog\\unsuccessfulbuild”执行 Touch 任务。
         ClCompile:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.37.32822\\bin\\HostX64\\x64\\CL.exe /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_91715.dir\\Debug\\\\" /Fd"cmTC_91715.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TC /errorReport:queue "D:\\CMaKe\\share\\cmake-3.30\\Modules\\CMakeCCompilerABI.c"
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.37.32822\\bin\\HostX64\\x64\\CL.exe /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_9c730.dir\\Debug\\\\" /Fd"cmTC_9c730.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TC /errorReport:queue "D:\\CMaKe\\share\\cmake-3.30\\Modules\\CMakeCCompilerABI.c"
           用于 x64 的 Microsoft (R) C/C++ 优化编译器 19.37.32825 版
-          版权所有(C) Microsoft Corporation。保留所有权利。
           CMakeCCompilerABI.c
-          cl /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_91715.dir\\Debug\\\\" /Fd"cmTC_91715.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TC /errorReport:queue "D:\\CMaKe\\share\\cmake-3.30\\Modules\\CMakeCCompilerABI.c"
+          版权所有(C) Microsoft Corporation。保留所有权利。
+          cl /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_9c730.dir\\Debug\\\\" /Fd"cmTC_9c730.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TC /errorReport:queue "D:\\CMaKe\\share\\cmake-3.30\\Modules\\CMakeCCompilerABI.c"
         Link:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.37.32822\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"D:\\vscode_wokerspace\\opengl_use1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-je58ty\\Debug\\cmTC_91715.exe" /INCREMENTAL /ILK:"cmTC_91715.dir\\Debug\\cmTC_91715.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:/vscode_wokerspace/opengl_use1/build/CMakeFiles/CMakeScratch/TryCompile-je58ty/Debug/cmTC_91715.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:/vscode_wokerspace/opengl_use1/build/CMakeFiles/CMakeScratch/TryCompile-je58ty/Debug/cmTC_91715.lib" /MACHINE:X64  /machine:x64 cmTC_91715.dir\\Debug\\CMakeCCompilerABI.obj
-          cmTC_91715.vcxproj -> D:\\vscode_wokerspace\\opengl_use1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-je58ty\\Debug\\cmTC_91715.exe
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.37.32822\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"D:\\vscode_wokerspace\\opengl_use1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-m1g1j6\\Debug\\cmTC_9c730.exe" /INCREMENTAL /ILK:"cmTC_9c730.dir\\Debug\\cmTC_9c730.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:/vscode_wokerspace/opengl_use1/build/CMakeFiles/CMakeScratch/TryCompile-m1g1j6/Debug/cmTC_9c730.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:/vscode_wokerspace/opengl_use1/build/CMakeFiles/CMakeScratch/TryCompile-m1g1j6/Debug/cmTC_9c730.lib" /MACHINE:X64  /machine:x64 cmTC_9c730.dir\\Debug\\CMakeCCompilerABI.obj
+          cmTC_9c730.vcxproj -> D:\\vscode_wokerspace\\opengl_use1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-m1g1j6\\Debug\\cmTC_9c730.exe
         FinalizeBuildStatus:
-          正在删除文件“cmTC_91715.dir\\Debug\\cmTC_91715.tlog\\unsuccessfulbuild”。
-          正在对“cmTC_91715.dir\\Debug\\cmTC_91715.tlog\\cmTC_91715.lastbuildstate”执行 Touch 任务。
-        已完成生成项目“D:\\vscode_wokerspace\\opengl_use1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-je58ty\\cmTC_91715.vcxproj”(默认目标)的操作。
+          正在删除文件“cmTC_9c730.dir\\Debug\\cmTC_9c730.tlog\\unsuccessfulbuild”。
+          正在对“cmTC_9c730.dir\\Debug\\cmTC_9c730.tlog\\cmTC_9c730.lastbuildstate”执行 Touch 任务。
+        已完成生成项目“D:\\vscode_wokerspace\\opengl_use1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-m1g1j6\\cmTC_9c730.vcxproj”(默认目标)的操作。
         
         已成功生成。
             0 个警告
             0 个错误
         
-        已用时间 00:00:00.41
+        已用时间 00:00:00.47
         
       exitCode: 0
   -
@@ -211,8 +211,8 @@ events:
     checks:
       - "Detecting CXX compiler ABI info"
     directories:
-      source: "D:/vscode_wokerspace/opengl_use1/build/CMakeFiles/CMakeScratch/TryCompile-bes5ib"
-      binary: "D:/vscode_wokerspace/opengl_use1/build/CMakeFiles/CMakeScratch/TryCompile-bes5ib"
+      source: "D:/vscode_wokerspace/opengl_use1/build/CMakeFiles/CMakeScratch/TryCompile-yfs7yl"
+      binary: "D:/vscode_wokerspace/opengl_use1/build/CMakeFiles/CMakeScratch/TryCompile-yfs7yl"
     cmakeVariables:
       CMAKE_CXX_FLAGS: "/DWIN32 /D_WINDOWS /W3 /GR /EHsc"
       CMAKE_CXX_FLAGS_DEBUG: "/MDd /Zi /Ob0 /Od /RTC1"
@@ -226,33 +226,33 @@ events:
       variable: "CMAKE_CXX_ABI_COMPILED"
       cached: true
       stdout: |
-        Change Dir: 'D:/vscode_wokerspace/opengl_use1/build/CMakeFiles/CMakeScratch/TryCompile-bes5ib'
+        Change Dir: 'D:/vscode_wokerspace/opengl_use1/build/CMakeFiles/CMakeScratch/TryCompile-yfs7yl'
         
-        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_e6cfb.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_b3ef5.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
         适用于 .NET Framework MSBuild 版本 17.7.2+d6990bcfa
-        生成启动时间为 2024/9/24 21:21:42。
+        生成启动时间为 2024/9/25 14:41:19。
         
-        节点 1 上的项目“D:\\vscode_wokerspace\\opengl_use1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-bes5ib\\cmTC_e6cfb.vcxproj”(默认目标)。
+        节点 1 上的项目“D:\\vscode_wokerspace\\opengl_use1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-yfs7yl\\cmTC_b3ef5.vcxproj”(默认目标)。
         PrepareForBuild:
-          正在创建目录“cmTC_e6cfb.dir\\Debug\\”。
-          正在创建目录“D:\\vscode_wokerspace\\opengl_use1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-bes5ib\\Debug\\”。
-          正在创建目录“cmTC_e6cfb.dir\\Debug\\cmTC_e6cfb.tlog\\”。
+          正在创建目录“cmTC_b3ef5.dir\\Debug\\”。
+          正在创建目录“D:\\vscode_wokerspace\\opengl_use1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-yfs7yl\\Debug\\”。
+          正在创建目录“cmTC_b3ef5.dir\\Debug\\cmTC_b3ef5.tlog\\”。
         InitializeBuildStatus:
-          正在创建“cmTC_e6cfb.dir\\Debug\\cmTC_e6cfb.tlog\\unsuccessfulbuild”，因为已指定“AlwaysCreate”。
-          正在对“cmTC_e6cfb.dir\\Debug\\cmTC_e6cfb.tlog\\unsuccessfulbuild”执行 Touch 任务。
+          正在创建“cmTC_b3ef5.dir\\Debug\\cmTC_b3ef5.tlog\\unsuccessfulbuild”，因为已指定“AlwaysCreate”。
+          正在对“cmTC_b3ef5.dir\\Debug\\cmTC_b3ef5.tlog\\unsuccessfulbuild”执行 Touch 任务。
         ClCompile:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.37.32822\\bin\\HostX64\\x64\\CL.exe /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_e6cfb.dir\\Debug\\\\" /Fd"cmTC_e6cfb.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TP /errorReport:queue "D:\\CMaKe\\share\\cmake-3.30\\Modules\\CMakeCXXCompilerABI.cpp"
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.37.32822\\bin\\HostX64\\x64\\CL.exe /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_b3ef5.dir\\Debug\\\\" /Fd"cmTC_b3ef5.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TP /errorReport:queue "D:\\CMaKe\\share\\cmake-3.30\\Modules\\CMakeCXXCompilerABI.cpp"
           用于 x64 的 Microsoft (R) C/C++ 优化编译器 19.37.32825 版
-          CMakeCXXCompilerABI.cpp
           版权所有(C) Microsoft Corporation。保留所有权利。
-          cl /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_e6cfb.dir\\Debug\\\\" /Fd"cmTC_e6cfb.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TP /errorReport:queue "D:\\CMaKe\\share\\cmake-3.30\\Modules\\CMakeCXXCompilerABI.cpp"
+          CMakeCXXCompilerABI.cpp
+          cl /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_b3ef5.dir\\Debug\\\\" /Fd"cmTC_b3ef5.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TP /errorReport:queue "D:\\CMaKe\\share\\cmake-3.30\\Modules\\CMakeCXXCompilerABI.cpp"
         Link:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.37.32822\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"D:\\vscode_wokerspace\\opengl_use1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-bes5ib\\Debug\\cmTC_e6cfb.exe" /INCREMENTAL /ILK:"cmTC_e6cfb.dir\\Debug\\cmTC_e6cfb.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:/vscode_wokerspace/opengl_use1/build/CMakeFiles/CMakeScratch/TryCompile-bes5ib/Debug/cmTC_e6cfb.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:/vscode_wokerspace/opengl_use1/build/CMakeFiles/CMakeScratch/TryCompile-bes5ib/Debug/cmTC_e6cfb.lib" /MACHINE:X64  /machine:x64 cmTC_e6cfb.dir\\Debug\\CMakeCXXCompilerABI.obj
-          cmTC_e6cfb.vcxproj -> D:\\vscode_wokerspace\\opengl_use1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-bes5ib\\Debug\\cmTC_e6cfb.exe
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.37.32822\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"D:\\vscode_wokerspace\\opengl_use1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-yfs7yl\\Debug\\cmTC_b3ef5.exe" /INCREMENTAL /ILK:"cmTC_b3ef5.dir\\Debug\\cmTC_b3ef5.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:/vscode_wokerspace/opengl_use1/build/CMakeFiles/CMakeScratch/TryCompile-yfs7yl/Debug/cmTC_b3ef5.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:/vscode_wokerspace/opengl_use1/build/CMakeFiles/CMakeScratch/TryCompile-yfs7yl/Debug/cmTC_b3ef5.lib" /MACHINE:X64  /machine:x64 cmTC_b3ef5.dir\\Debug\\CMakeCXXCompilerABI.obj
+          cmTC_b3ef5.vcxproj -> D:\\vscode_wokerspace\\opengl_use1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-yfs7yl\\Debug\\cmTC_b3ef5.exe
         FinalizeBuildStatus:
-          正在删除文件“cmTC_e6cfb.dir\\Debug\\cmTC_e6cfb.tlog\\unsuccessfulbuild”。
-          正在对“cmTC_e6cfb.dir\\Debug\\cmTC_e6cfb.tlog\\cmTC_e6cfb.lastbuildstate”执行 Touch 任务。
-        已完成生成项目“D:\\vscode_wokerspace\\opengl_use1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-bes5ib\\cmTC_e6cfb.vcxproj”(默认目标)的操作。
+          正在删除文件“cmTC_b3ef5.dir\\Debug\\cmTC_b3ef5.tlog\\unsuccessfulbuild”。
+          正在对“cmTC_b3ef5.dir\\Debug\\cmTC_b3ef5.tlog\\cmTC_b3ef5.lastbuildstate”执行 Touch 任务。
+        已完成生成项目“D:\\vscode_wokerspace\\opengl_use1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-yfs7yl\\cmTC_b3ef5.vcxproj”(默认目标)的操作。
         
         已成功生成。
             0 个警告
@@ -304,8 +304,8 @@ events:
     checks:
       - "Performing Test CMAKE_HAVE_LIBC_PTHREAD"
     directories:
-      source: "D:/vscode_wokerspace/opengl_use1/build/CMakeFiles/CMakeScratch/TryCompile-4iqthj"
-      binary: "D:/vscode_wokerspace/opengl_use1/build/CMakeFiles/CMakeScratch/TryCompile-4iqthj"
+      source: "D:/vscode_wokerspace/opengl_use1/build/CMakeFiles/CMakeScratch/TryCompile-eh5g5o"
+      binary: "D:/vscode_wokerspace/opengl_use1/build/CMakeFiles/CMakeScratch/TryCompile-eh5g5o"
     cmakeVariables:
       CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS /W3"
       CMAKE_C_FLAGS_DEBUG: "/MDd /Zi /Ob0 /Od /RTC1"
@@ -318,39 +318,39 @@ events:
       variable: "CMAKE_HAVE_LIBC_PTHREAD"
       cached: true
       stdout: |
-        Change Dir: 'D:/vscode_wokerspace/opengl_use1/build/CMakeFiles/CMakeScratch/TryCompile-4iqthj'
+        Change Dir: 'D:/vscode_wokerspace/opengl_use1/build/CMakeFiles/CMakeScratch/TryCompile-eh5g5o'
         
-        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_e180f.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_be095.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
         适用于 .NET Framework MSBuild 版本 17.7.2+d6990bcfa
-        生成启动时间为 2024/9/24 21:21:42。
+        生成启动时间为 2024/9/25 14:41:20。
         
-        节点 1 上的项目“D:\\vscode_wokerspace\\opengl_use1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-4iqthj\\cmTC_e180f.vcxproj”(默认目标)。
+        节点 1 上的项目“D:\\vscode_wokerspace\\opengl_use1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-eh5g5o\\cmTC_be095.vcxproj”(默认目标)。
         PrepareForBuild:
-          正在创建目录“cmTC_e180f.dir\\Debug\\”。
-          正在创建目录“D:\\vscode_wokerspace\\opengl_use1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-4iqthj\\Debug\\”。
-          正在创建目录“cmTC_e180f.dir\\Debug\\cmTC_e180f.tlog\\”。
+          正在创建目录“cmTC_be095.dir\\Debug\\”。
+          正在创建目录“D:\\vscode_wokerspace\\opengl_use1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-eh5g5o\\Debug\\”。
+          正在创建目录“cmTC_be095.dir\\Debug\\cmTC_be095.tlog\\”。
         InitializeBuildStatus:
-          正在创建“cmTC_e180f.dir\\Debug\\cmTC_e180f.tlog\\unsuccessfulbuild”，因为已指定“AlwaysCreate”。
-          正在对“cmTC_e180f.dir\\Debug\\cmTC_e180f.tlog\\unsuccessfulbuild”执行 Touch 任务。
+          正在创建“cmTC_be095.dir\\Debug\\cmTC_be095.tlog\\unsuccessfulbuild”，因为已指定“AlwaysCreate”。
+          正在对“cmTC_be095.dir\\Debug\\cmTC_be095.tlog\\unsuccessfulbuild”执行 Touch 任务。
         ClCompile:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.37.32822\\bin\\HostX64\\x64\\CL.exe /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CMAKE_HAVE_LIBC_PTHREAD /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_e180f.dir\\Debug\\\\" /Fd"cmTC_e180f.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TC /errorReport:queue "D:\\vscode_wokerspace\\opengl_use1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-4iqthj\\src.c"
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.37.32822\\bin\\HostX64\\x64\\CL.exe /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CMAKE_HAVE_LIBC_PTHREAD /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_be095.dir\\Debug\\\\" /Fd"cmTC_be095.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TC /errorReport:queue "D:\\vscode_wokerspace\\opengl_use1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-eh5g5o\\src.c"
           用于 x64 的 Microsoft (R) C/C++ 优化编译器 19.37.32825 版
-          版权所有(C) Microsoft Corporation。保留所有权利。
           src.c
-          cl /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CMAKE_HAVE_LIBC_PTHREAD /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_e180f.dir\\Debug\\\\" /Fd"cmTC_e180f.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TC /errorReport:queue "D:\\vscode_wokerspace\\opengl_use1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-4iqthj\\src.c"
-        D:\\vscode_wokerspace\\opengl_use1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-4iqthj\\src.c(1,10): fatal  error C1083: 无法打开包括文件: “pthread.h”: No such file or directory [D:\\vscode_wokerspace\\opengl_use1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-4iqthj\\cmTC_e180f.vcxproj]
-        已完成生成项目“D:\\vscode_wokerspace\\opengl_use1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-4iqthj\\cmTC_e180f.vcxproj”(默认目标)的操作 - 失败。
+          版权所有(C) Microsoft Corporation。保留所有权利。
+          cl /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CMAKE_HAVE_LIBC_PTHREAD /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_be095.dir\\Debug\\\\" /Fd"cmTC_be095.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TC /errorReport:queue "D:\\vscode_wokerspace\\opengl_use1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-eh5g5o\\src.c"
+        D:\\vscode_wokerspace\\opengl_use1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-eh5g5o\\src.c(1,10): fatal  error C1083: 无法打开包括文件: “pthread.h”: No such file or directory [D:\\vscode_wokerspace\\opengl_use1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-eh5g5o\\cmTC_be095.vcxproj]
+        已完成生成项目“D:\\vscode_wokerspace\\opengl_use1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-eh5g5o\\cmTC_be095.vcxproj”(默认目标)的操作 - 失败。
         
         生成失败。
         
-        “D:\\vscode_wokerspace\\opengl_use1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-4iqthj\\cmTC_e180f.vcxproj”(默认目标) (1) ->
+        “D:\\vscode_wokerspace\\opengl_use1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-eh5g5o\\cmTC_be095.vcxproj”(默认目标) (1) ->
         (ClCompile 目标) -> 
-          D:\\vscode_wokerspace\\opengl_use1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-4iqthj\\src.c(1,10): fatal  error C1083: 无法打开包括文件: “pthread.h”: No such file or directory [D:\\vscode_wokerspace\\opengl_use1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-4iqthj\\cmTC_e180f.vcxproj]
+          D:\\vscode_wokerspace\\opengl_use1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-eh5g5o\\src.c(1,10): fatal  error C1083: 无法打开包括文件: “pthread.h”: No such file or directory [D:\\vscode_wokerspace\\opengl_use1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-eh5g5o\\cmTC_be095.vcxproj]
         
             0 个警告
             1 个错误
         
-        已用时间 00:00:00.27
+        已用时间 00:00:00.30
         
       exitCode: 1
   -
@@ -367,8 +367,8 @@ events:
     checks:
       - "Looking for pthread_create in pthreads"
     directories:
-      source: "D:/vscode_wokerspace/opengl_use1/build/CMakeFiles/CMakeScratch/TryCompile-wbziem"
-      binary: "D:/vscode_wokerspace/opengl_use1/build/CMakeFiles/CMakeScratch/TryCompile-wbziem"
+      source: "D:/vscode_wokerspace/opengl_use1/build/CMakeFiles/CMakeScratch/TryCompile-4u9scy"
+      binary: "D:/vscode_wokerspace/opengl_use1/build/CMakeFiles/CMakeScratch/TryCompile-4u9scy"
     cmakeVariables:
       CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS /W3"
       CMAKE_C_FLAGS_DEBUG: "/MDd /Zi /Ob0 /Od /RTC1"
@@ -381,36 +381,36 @@ events:
       variable: "CMAKE_HAVE_PTHREADS_CREATE"
       cached: true
       stdout: |
-        Change Dir: 'D:/vscode_wokerspace/opengl_use1/build/CMakeFiles/CMakeScratch/TryCompile-wbziem'
+        Change Dir: 'D:/vscode_wokerspace/opengl_use1/build/CMakeFiles/CMakeScratch/TryCompile-4u9scy'
         
-        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_d229a.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_69647.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
         适用于 .NET Framework MSBuild 版本 17.7.2+d6990bcfa
-        生成启动时间为 2024/9/24 21:21:43。
+        生成启动时间为 2024/9/25 14:41:20。
         
-        节点 1 上的项目“D:\\vscode_wokerspace\\opengl_use1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-wbziem\\cmTC_d229a.vcxproj”(默认目标)。
+        节点 1 上的项目“D:\\vscode_wokerspace\\opengl_use1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-4u9scy\\cmTC_69647.vcxproj”(默认目标)。
         PrepareForBuild:
-          正在创建目录“cmTC_d229a.dir\\Debug\\”。
-          正在创建目录“D:\\vscode_wokerspace\\opengl_use1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-wbziem\\Debug\\”。
-          正在创建目录“cmTC_d229a.dir\\Debug\\cmTC_d229a.tlog\\”。
+          正在创建目录“cmTC_69647.dir\\Debug\\”。
+          正在创建目录“D:\\vscode_wokerspace\\opengl_use1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-4u9scy\\Debug\\”。
+          正在创建目录“cmTC_69647.dir\\Debug\\cmTC_69647.tlog\\”。
         InitializeBuildStatus:
-          正在创建“cmTC_d229a.dir\\Debug\\cmTC_d229a.tlog\\unsuccessfulbuild”，因为已指定“AlwaysCreate”。
-          正在对“cmTC_d229a.dir\\Debug\\cmTC_d229a.tlog\\unsuccessfulbuild”执行 Touch 任务。
+          正在创建“cmTC_69647.dir\\Debug\\cmTC_69647.tlog\\unsuccessfulbuild”，因为已指定“AlwaysCreate”。
+          正在对“cmTC_69647.dir\\Debug\\cmTC_69647.tlog\\unsuccessfulbuild”执行 Touch 任务。
         ClCompile:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.37.32822\\bin\\HostX64\\x64\\CL.exe /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CHECK_FUNCTION_EXISTS=pthread_create /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_d229a.dir\\Debug\\\\" /Fd"cmTC_d229a.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TC /errorReport:queue "D:\\vscode_wokerspace\\opengl_use1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-wbziem\\CheckFunctionExists.c"
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.37.32822\\bin\\HostX64\\x64\\CL.exe /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CHECK_FUNCTION_EXISTS=pthread_create /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_69647.dir\\Debug\\\\" /Fd"cmTC_69647.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TC /errorReport:queue "D:\\vscode_wokerspace\\opengl_use1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-4u9scy\\CheckFunctionExists.c"
           用于 x64 的 Microsoft (R) C/C++ 优化编译器 19.37.32825 版
-          版权所有(C) Microsoft Corporation。保留所有权利。
           CheckFunctionExists.c
-          cl /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CHECK_FUNCTION_EXISTS=pthread_create /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_d229a.dir\\Debug\\\\" /Fd"cmTC_d229a.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TC /errorReport:queue "D:\\vscode_wokerspace\\opengl_use1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-wbziem\\CheckFunctionExists.c"
+          版权所有(C) Microsoft Corporation。保留所有权利。
+          cl /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CHECK_FUNCTION_EXISTS=pthread_create /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_69647.dir\\Debug\\\\" /Fd"cmTC_69647.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TC /errorReport:queue "D:\\vscode_wokerspace\\opengl_use1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-4u9scy\\CheckFunctionExists.c"
         Link:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.37.32822\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"D:\\vscode_wokerspace\\opengl_use1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-wbziem\\Debug\\cmTC_d229a.exe" /INCREMENTAL /ILK:"cmTC_d229a.dir\\Debug\\cmTC_d229a.ilk" /NOLOGO pthreads.lib kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:/vscode_wokerspace/opengl_use1/build/CMakeFiles/CMakeScratch/TryCompile-wbziem/Debug/cmTC_d229a.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:/vscode_wokerspace/opengl_use1/build/CMakeFiles/CMakeScratch/TryCompile-wbziem/Debug/cmTC_d229a.lib" /MACHINE:X64  /machine:x64 cmTC_d229a.dir\\Debug\\CheckFunctionExists.obj
-        LINK : fatal error LNK1104: 无法打开文件“pthreads.lib” [D:\\vscode_wokerspace\\opengl_use1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-wbziem\\cmTC_d229a.vcxproj]
-        已完成生成项目“D:\\vscode_wokerspace\\opengl_use1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-wbziem\\cmTC_d229a.vcxproj”(默认目标)的操作 - 失败。
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.37.32822\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"D:\\vscode_wokerspace\\opengl_use1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-4u9scy\\Debug\\cmTC_69647.exe" /INCREMENTAL /ILK:"cmTC_69647.dir\\Debug\\cmTC_69647.ilk" /NOLOGO pthreads.lib kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:/vscode_wokerspace/opengl_use1/build/CMakeFiles/CMakeScratch/TryCompile-4u9scy/Debug/cmTC_69647.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:/vscode_wokerspace/opengl_use1/build/CMakeFiles/CMakeScratch/TryCompile-4u9scy/Debug/cmTC_69647.lib" /MACHINE:X64  /machine:x64 cmTC_69647.dir\\Debug\\CheckFunctionExists.obj
+        LINK : fatal error LNK1104: 无法打开文件“pthreads.lib” [D:\\vscode_wokerspace\\opengl_use1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-4u9scy\\cmTC_69647.vcxproj]
+        已完成生成项目“D:\\vscode_wokerspace\\opengl_use1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-4u9scy\\cmTC_69647.vcxproj”(默认目标)的操作 - 失败。
         
         生成失败。
         
-        “D:\\vscode_wokerspace\\opengl_use1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-wbziem\\cmTC_d229a.vcxproj”(默认目标) (1) ->
+        “D:\\vscode_wokerspace\\opengl_use1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-4u9scy\\cmTC_69647.vcxproj”(默认目标) (1) ->
         (Link 目标) -> 
-          LINK : fatal error LNK1104: 无法打开文件“pthreads.lib” [D:\\vscode_wokerspace\\opengl_use1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-wbziem\\cmTC_d229a.vcxproj]
+          LINK : fatal error LNK1104: 无法打开文件“pthreads.lib” [D:\\vscode_wokerspace\\opengl_use1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-4u9scy\\cmTC_69647.vcxproj]
         
             0 个警告
             1 个错误
@@ -432,8 +432,8 @@ events:
     checks:
       - "Looking for pthread_create in pthread"
     directories:
-      source: "D:/vscode_wokerspace/opengl_use1/build/CMakeFiles/CMakeScratch/TryCompile-jvff8a"
-      binary: "D:/vscode_wokerspace/opengl_use1/build/CMakeFiles/CMakeScratch/TryCompile-jvff8a"
+      source: "D:/vscode_wokerspace/opengl_use1/build/CMakeFiles/CMakeScratch/TryCompile-ofoicp"
+      binary: "D:/vscode_wokerspace/opengl_use1/build/CMakeFiles/CMakeScratch/TryCompile-ofoicp"
     cmakeVariables:
       CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS /W3"
       CMAKE_C_FLAGS_DEBUG: "/MDd /Zi /Ob0 /Od /RTC1"
@@ -446,41 +446,41 @@ events:
       variable: "CMAKE_HAVE_PTHREAD_CREATE"
       cached: true
       stdout: |
-        Change Dir: 'D:/vscode_wokerspace/opengl_use1/build/CMakeFiles/CMakeScratch/TryCompile-jvff8a'
+        Change Dir: 'D:/vscode_wokerspace/opengl_use1/build/CMakeFiles/CMakeScratch/TryCompile-ofoicp'
         
-        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_c2d3a.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_7c033.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
         适用于 .NET Framework MSBuild 版本 17.7.2+d6990bcfa
-        生成启动时间为 2024/9/24 21:21:43。
+        生成启动时间为 2024/9/25 14:41:21。
         
-        节点 1 上的项目“D:\\vscode_wokerspace\\opengl_use1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-jvff8a\\cmTC_c2d3a.vcxproj”(默认目标)。
+        节点 1 上的项目“D:\\vscode_wokerspace\\opengl_use1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-ofoicp\\cmTC_7c033.vcxproj”(默认目标)。
         PrepareForBuild:
-          正在创建目录“cmTC_c2d3a.dir\\Debug\\”。
-          正在创建目录“D:\\vscode_wokerspace\\opengl_use1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-jvff8a\\Debug\\”。
-          正在创建目录“cmTC_c2d3a.dir\\Debug\\cmTC_c2d3a.tlog\\”。
+          正在创建目录“cmTC_7c033.dir\\Debug\\”。
+          正在创建目录“D:\\vscode_wokerspace\\opengl_use1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-ofoicp\\Debug\\”。
+          正在创建目录“cmTC_7c033.dir\\Debug\\cmTC_7c033.tlog\\”。
         InitializeBuildStatus:
-          正在创建“cmTC_c2d3a.dir\\Debug\\cmTC_c2d3a.tlog\\unsuccessfulbuild”，因为已指定“AlwaysCreate”。
-          正在对“cmTC_c2d3a.dir\\Debug\\cmTC_c2d3a.tlog\\unsuccessfulbuild”执行 Touch 任务。
+          正在创建“cmTC_7c033.dir\\Debug\\cmTC_7c033.tlog\\unsuccessfulbuild”，因为已指定“AlwaysCreate”。
+          正在对“cmTC_7c033.dir\\Debug\\cmTC_7c033.tlog\\unsuccessfulbuild”执行 Touch 任务。
         ClCompile:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.37.32822\\bin\\HostX64\\x64\\CL.exe /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CHECK_FUNCTION_EXISTS=pthread_create /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_c2d3a.dir\\Debug\\\\" /Fd"cmTC_c2d3a.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TC /errorReport:queue "D:\\vscode_wokerspace\\opengl_use1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-jvff8a\\CheckFunctionExists.c"
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.37.32822\\bin\\HostX64\\x64\\CL.exe /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CHECK_FUNCTION_EXISTS=pthread_create /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_7c033.dir\\Debug\\\\" /Fd"cmTC_7c033.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TC /errorReport:queue "D:\\vscode_wokerspace\\opengl_use1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-ofoicp\\CheckFunctionExists.c"
           用于 x64 的 Microsoft (R) C/C++ 优化编译器 19.37.32825 版
-          CheckFunctionExists.c
           版权所有(C) Microsoft Corporation。保留所有权利。
-          cl /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CHECK_FUNCTION_EXISTS=pthread_create /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_c2d3a.dir\\Debug\\\\" /Fd"cmTC_c2d3a.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TC /errorReport:queue "D:\\vscode_wokerspace\\opengl_use1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-jvff8a\\CheckFunctionExists.c"
+          CheckFunctionExists.c
+          cl /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CHECK_FUNCTION_EXISTS=pthread_create /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_7c033.dir\\Debug\\\\" /Fd"cmTC_7c033.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TC /errorReport:queue "D:\\vscode_wokerspace\\opengl_use1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-ofoicp\\CheckFunctionExists.c"
         Link:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.37.32822\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"D:\\vscode_wokerspace\\opengl_use1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-jvff8a\\Debug\\cmTC_c2d3a.exe" /INCREMENTAL /ILK:"cmTC_c2d3a.dir\\Debug\\cmTC_c2d3a.ilk" /NOLOGO pthread.lib kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:/vscode_wokerspace/opengl_use1/build/CMakeFiles/CMakeScratch/TryCompile-jvff8a/Debug/cmTC_c2d3a.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:/vscode_wokerspace/opengl_use1/build/CMakeFiles/CMakeScratch/TryCompile-jvff8a/Debug/cmTC_c2d3a.lib" /MACHINE:X64  /machine:x64 cmTC_c2d3a.dir\\Debug\\CheckFunctionExists.obj
-        LINK : fatal error LNK1104: 无法打开文件“pthread.lib” [D:\\vscode_wokerspace\\opengl_use1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-jvff8a\\cmTC_c2d3a.vcxproj]
-        已完成生成项目“D:\\vscode_wokerspace\\opengl_use1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-jvff8a\\cmTC_c2d3a.vcxproj”(默认目标)的操作 - 失败。
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.37.32822\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"D:\\vscode_wokerspace\\opengl_use1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-ofoicp\\Debug\\cmTC_7c033.exe" /INCREMENTAL /ILK:"cmTC_7c033.dir\\Debug\\cmTC_7c033.ilk" /NOLOGO pthread.lib kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:/vscode_wokerspace/opengl_use1/build/CMakeFiles/CMakeScratch/TryCompile-ofoicp/Debug/cmTC_7c033.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:/vscode_wokerspace/opengl_use1/build/CMakeFiles/CMakeScratch/TryCompile-ofoicp/Debug/cmTC_7c033.lib" /MACHINE:X64  /machine:x64 cmTC_7c033.dir\\Debug\\CheckFunctionExists.obj
+        LINK : fatal error LNK1104: 无法打开文件“pthread.lib” [D:\\vscode_wokerspace\\opengl_use1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-ofoicp\\cmTC_7c033.vcxproj]
+        已完成生成项目“D:\\vscode_wokerspace\\opengl_use1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-ofoicp\\cmTC_7c033.vcxproj”(默认目标)的操作 - 失败。
         
         生成失败。
         
-        “D:\\vscode_wokerspace\\opengl_use1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-jvff8a\\cmTC_c2d3a.vcxproj”(默认目标) (1) ->
+        “D:\\vscode_wokerspace\\opengl_use1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-ofoicp\\cmTC_7c033.vcxproj”(默认目标) (1) ->
         (Link 目标) -> 
-          LINK : fatal error LNK1104: 无法打开文件“pthread.lib” [D:\\vscode_wokerspace\\opengl_use1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-jvff8a\\cmTC_c2d3a.vcxproj]
+          LINK : fatal error LNK1104: 无法打开文件“pthread.lib” [D:\\vscode_wokerspace\\opengl_use1\\build\\CMakeFiles\\CMakeScratch\\TryCompile-ofoicp\\cmTC_7c033.vcxproj]
         
             0 个警告
             1 个错误
         
-        已用时间 00:00:00.33
+        已用时间 00:00:00.34
         
       exitCode: 1
 ...
