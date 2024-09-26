@@ -98,6 +98,19 @@ int main() {
         -0.5f,  0.5f, -0.5f,  0.0f, 1.0f
      
     };
+    // 多个正方体，在世界空间不同的位移量
+    glm::vec3 cubePositions[] = {
+        glm::vec3( 0.0f,  0.0f,  0.0f), 
+        glm::vec3( 2.0f,  5.0f, -15.0f), 
+        glm::vec3(-1.5f, -2.2f, -2.5f),  
+        glm::vec3(-3.8f, -2.0f, -12.3f),  
+        glm::vec3( 2.4f, -0.4f, -3.5f),  
+        glm::vec3(-1.7f,  3.0f, -7.5f),  
+        glm::vec3( 1.3f, -2.0f, -2.5f),  
+        glm::vec3( 1.5f,  2.0f, -2.5f), 
+        glm::vec3( 1.5f,  0.2f, -1.5f), 
+        glm::vec3(-1.3f,  1.0f, -1.5f)  
+    };
     // unsigned int indices[] = {  // 注意索引从0开始!
     //     0, 1, 3,  // 第一个三角形
     //     1, 2, 3   // 第二个三角形
@@ -208,8 +221,8 @@ int main() {
         ourShader.setFloat("mixValue", mixValue);
 
         // 模型矩阵
-        glm::mat4 model = glm::mat4(1.0f); 
-        model = glm::rotate(model, (float)glfwGetTime() * glm::radians(50.0f), glm::vec3(0.5f, 1.0f, 0.0f));// 旋转，角度随时间变化
+        //glm::mat4 model = glm::mat4(1.0f); 
+        //model = glm::rotate(model, (float)glfwGetTime() * glm::radians(50.0f), glm::vec3(0.5f, 1.0f, 0.0f));// 旋转，角度随时间变化
         //model = glm::translate(model, glm::vec3(0.5f, -0.5f, 0.0f)); // 位移
         
         // 观察矩阵
@@ -220,8 +233,8 @@ int main() {
         glm::mat4 projection = glm::mat4(1.0f);
         projection = glm::perspective(glm::radians(45.0f), (float)WIDTH / (float)HEIGHT, 0.1f, 100.0f);
 
-        unsigned int modelLoc = glGetUniformLocation(ourShader.ID, "model");
-        glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+        //unsigned int modelLoc = glGetUniformLocation(ourShader.ID, "model");
+        //glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 
         int viewLoc = glGetUniformLocation(ourShader.ID, "view");
         glUniformMatrix4fv(viewLoc, 1, GL_FALSE, &view[0][0]); // 上下三种传递方法都可以
@@ -229,7 +242,17 @@ int main() {
         ourShader.setMat4("projection", projection); // 投影矩阵很少有变化，所以我们将其定义在外面
 
         glBindVertexArray(VAO); // 目前只有一个VAO，不需要每次都绑定
-        glDrawArrays(GL_TRIANGLES, 0, 36);
+        // 画出多个不同位置的正方体
+        for(unsigned int i = 0; i < 10; i++)
+        {
+            glm::mat4 model = glm::mat4(1.0f);
+            model = glm::translate(model, cubePositions[i]);
+            float angle = 20.0f * i; 
+            model = glm::rotate(model, (glm::radians(angle) + (float)glfwGetTime() * glm::radians(50.0f)), glm::vec3(1.0f, 0.3f, 0.5f));
+            ourShader.setMat4("model", model);
+
+            glDrawArrays(GL_TRIANGLES, 0, 36);
+        }
         //glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);//绘制模式、顶点个数、索引类型、EBO偏移量
         //glDrawArrays(GL_TRIANGLES, 0, 3); // 第一个参数表示绘制类型（三角形），0表示起始索引，3表示顶点数
 
