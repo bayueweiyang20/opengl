@@ -47,28 +47,68 @@ int main() {
         return -1;
     }
 
+    // 配置全局状态
+    glEnable(GL_DEPTH_TEST); // 深度测试
 
     Shader ourShader("./shaders/shader.vs", "./shaders/shader.fs");
 
     //顶点输入
     float vertices[] = {
-         // 位置               // 颜色             // 纹理
-         0.5f,  0.5f, 0.0f,   1.0f, 0.0f, 0.0f,   1.0f, 1.0f, // 右上
-         0.5f, -0.5f, 0.0f,   0.0f, 1.0f, 0.0f,   1.0f, 0.0f, // 右下
-        -0.5f, -0.5f, 0.0f,   0.0f, 0.0f, 1.0f,   0.0f, 0.0f, // 左下
-        -0.5f,  0.5f, 0.0f,   1.0f, 1.0f, 0.0f,   0.0f, 1.0f  // 左上 
+         // 位置               // 纹理             
+        -0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
+         0.5f, -0.5f, -0.5f,  1.0f, 0.0f,
+         0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
+         0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
+        -0.5f,  0.5f, -0.5f,  0.0f, 1.0f,
+        -0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
+
+        -0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
+         0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
+         0.5f,  0.5f,  0.5f,  1.0f, 1.0f,
+         0.5f,  0.5f,  0.5f,  1.0f, 1.0f,
+        -0.5f,  0.5f,  0.5f,  0.0f, 1.0f,
+        -0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
+
+        -0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
+        -0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
+        -0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
+        -0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
+        -0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
+        -0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
+
+         0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
+         0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
+         0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
+         0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
+         0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
+         0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
+
+        -0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
+         0.5f, -0.5f, -0.5f,  1.0f, 1.0f,
+         0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
+         0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
+        -0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
+        -0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
+
+        -0.5f,  0.5f, -0.5f,  0.0f, 1.0f,
+         0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
+         0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
+         0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
+        -0.5f,  0.5f,  0.5f,  0.0f, 0.0f,
+        -0.5f,  0.5f, -0.5f,  0.0f, 1.0f
+     
     };
-    unsigned int indices[] = {  // 注意索引从0开始!
-        0, 1, 3,  // 第一个三角形
-        1, 2, 3   // 第二个三角形
-    };
+    // unsigned int indices[] = {  // 注意索引从0开始!
+    //     0, 1, 3,  // 第一个三角形
+    //     1, 2, 3   // 第二个三角形
+    // };
 
     // VAO存储顶点属性，VBO存储顶点数据
     unsigned int VBO, VAO;
-    unsigned int EBO;
+    //unsigned int EBO;
     glGenVertexArrays(1, &VAO);
     glGenBuffers(1, &VBO);
-    glGenBuffers(1, &EBO);
+    //glGenBuffers(1, &EBO);
     // 绑定VAO
     glBindVertexArray(VAO);
 
@@ -77,19 +117,19 @@ int main() {
     glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
 
     // 把索引复制到缓冲里
-    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
-    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
+    // glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
+    // glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
 
     // 设置顶点属性指针
     // 位置属性
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)0);
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)0);
     glEnableVertexAttribArray(0); // 启用顶点属性（默认禁用）
     // 颜色属性
-    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(3* sizeof(float)));
-    glEnableVertexAttribArray(1);
+    //glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(3* sizeof(float)));
+    //glEnableVertexAttribArray(1);
     //纹理属性
-    glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(6 * sizeof(float)));
-    glEnableVertexAttribArray(2);
+    glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)(3 * sizeof(float)));
+    glEnableVertexAttribArray(1);
 
     // 加载和创建纹理
     unsigned int texture1,texture2;
@@ -154,7 +194,7 @@ int main() {
 
         // 渲染
         glClearColor(0.2f, 0.3f, 0.3f, 1.0f); // 在新渲染前需要清屏
-        glClear(GL_COLOR_BUFFER_BIT);
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // 清除深度测试
 
         // 绑定多个纹理
         glActiveTexture(GL_TEXTURE0);
@@ -169,8 +209,7 @@ int main() {
 
         // 模型矩阵
         glm::mat4 model = glm::mat4(1.0f); 
-        model = glm::rotate(model, glm::radians(-55.0f), glm::vec3(1.0f, 0.0f, 0.0f));
-        //model = glm::rotate(model, (float)glfwGetTime(), glm::vec3(0.0f, 0.0f, 1.0f)); // 旋转，角度随时间变化
+        model = glm::rotate(model, (float)glfwGetTime() * glm::radians(50.0f), glm::vec3(0.5f, 1.0f, 0.0f));// 旋转，角度随时间变化
         //model = glm::translate(model, glm::vec3(0.5f, -0.5f, 0.0f)); // 位移
         
         // 观察矩阵
@@ -189,19 +228,9 @@ int main() {
 
         ourShader.setMat4("projection", projection); // 投影矩阵很少有变化，所以我们将其定义在外面
 
-        // double  timeValue = glfwGetTime();
-        // float xValue = static_cast<float>(sin(timeValue) / 2.0f);
-        // float yValue = static_cast<float>(cos(timeValue) / 2.0f);
-        // int vertexXYLocation = glGetUniformLocation(ourShader.ID, "xy");
-        // glUniform2f(vertexXYLocation, xValue, yValue);
-        // float rValue = static_cast<float>(sin(timeValue) / 2.0f);
-        // float gValue = static_cast<float>(sin(timeValue) / 2.0f);
-        // float bValue = static_cast<float>(sin(timeValue) / 2.0f);
-        // int vertexRGBLocation = glGetUniformLocation(ourShader.ID, "rgb");
-        // glUniform3f(vertexRGBLocation, abs(rValue), abs(gValue), abs(bValue));
-
         glBindVertexArray(VAO); // 目前只有一个VAO，不需要每次都绑定
-        glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);//绘制模式、顶点个数、索引类型、EBO偏移量
+        glDrawArrays(GL_TRIANGLES, 0, 36);
+        //glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);//绘制模式、顶点个数、索引类型、EBO偏移量
         //glDrawArrays(GL_TRIANGLES, 0, 3); // 第一个参数表示绘制类型（三角形），0表示起始索引，3表示顶点数
 
 
@@ -214,7 +243,7 @@ int main() {
     //释放资源
     glDeleteVertexArrays(1, &VAO);
     glDeleteBuffers(1, &VBO);
-    glDeleteBuffers(1, &EBO);
+    // glDeleteBuffers(1, &EBO);
     glDeleteProgram(ourShader.ID);
 
 
