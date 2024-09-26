@@ -167,8 +167,13 @@ int main() {
 
         // 生成变换
         glm::mat4 transform = glm::mat4(1.0f); 
-        transform = glm::translate(transform, glm::vec3(0.5f, -0.5f, 0.0f)); // 位移
         transform = glm::rotate(transform, (float)glfwGetTime(), glm::vec3(0.0f, 0.0f, 1.0f)); // 旋转，角度随时间变化
+        transform = glm::translate(transform, glm::vec3(0.5f, -0.5f, 0.0f)); // 位移
+        // 变换2
+        glm::mat4 transform2 = glm::mat4(1.0f); 
+        transform2 = glm::translate(transform2, glm::vec3(-0.5f, 0.5f, 0.0f)); // 位移
+        transform2 = glm::scale(transform2, glm::vec3(abs(sin(glfwGetTime())) , abs(sin(glfwGetTime())), abs(sin(glfwGetTime())))); // 缩放
+        
 
         // 画一个三角形
         ourShader.use(); // 激活着色程序
@@ -190,6 +195,11 @@ int main() {
         glBindVertexArray(VAO); // 目前只有一个VAO，不需要每次都绑定
         glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);//绘制模式、顶点个数、索引类型、EBO偏移量
         //glDrawArrays(GL_TRIANGLES, 0, 3); // 第一个参数表示绘制类型（三角形），0表示起始索引，3表示顶点数
+
+        //第二个图形
+        glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(transform2));
+        glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+
 
         // 检查并调用事件，交换缓冲
         glfwSwapBuffers(window);// 交换颜色缓冲，用来绘制
