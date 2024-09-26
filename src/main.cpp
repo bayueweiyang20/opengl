@@ -162,24 +162,32 @@ int main() {
         glActiveTexture(GL_TEXTURE1);
         glBindTexture(GL_TEXTURE_2D, texture2);
 
+        ourShader.use(); // 激活着色程序
+
         // 设置混合度
         ourShader.setFloat("mixValue", mixValue);
 
-        // 生成变换
-        glm::mat4 transform = glm::mat4(1.0f); 
-        transform = glm::rotate(transform, (float)glfwGetTime(), glm::vec3(0.0f, 0.0f, 1.0f)); // 旋转，角度随时间变化
-        transform = glm::translate(transform, glm::vec3(0.5f, -0.5f, 0.0f)); // 位移
-        // 变换2
-        glm::mat4 transform2 = glm::mat4(1.0f); 
-        transform2 = glm::translate(transform2, glm::vec3(-0.5f, 0.5f, 0.0f)); // 位移
-        transform2 = glm::scale(transform2, glm::vec3(abs(sin(glfwGetTime())) , abs(sin(glfwGetTime())), abs(sin(glfwGetTime())))); // 缩放
+        // 模型矩阵
+        glm::mat4 model = glm::mat4(1.0f); 
+        model = glm::rotate(model, glm::radians(-55.0f), glm::vec3(1.0f, 0.0f, 0.0f));
+        //model = glm::rotate(model, (float)glfwGetTime(), glm::vec3(0.0f, 0.0f, 1.0f)); // 旋转，角度随时间变化
+        //model = glm::translate(model, glm::vec3(0.5f, -0.5f, 0.0f)); // 位移
         
+        // 观察矩阵
+        glm::mat4 view = glm::mat4(1.0f);
+        view = glm::translate(view, glm::vec3(0.0f, 0.0f, -3.0f)); // 注意，我们将矩阵向我们要进行移动场景的反方向移动。
 
-        // 画一个三角形
-        ourShader.use(); // 激活着色程序
+        // 投影矩阵
+        glm::mat4 projection = glm::mat4(1.0f);
+        projection = glm::perspective(glm::radians(45.0f), (float)WIDTH / (float)HEIGHT, 0.1f, 100.0f);
 
-        unsigned int transformLoc = glGetUniformLocation(ourShader.ID, "transform");
-        glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(transform));
+        unsigned int modelLoc = glGetUniformLocation(ourShader.ID, "model");
+        glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+
+        int viewLoc = glGetUniformLocation(ourShader.ID, "view");
+        glUniformMatrix4fv(viewLoc, 1, GL_FALSE, &view[0][0]); // 上下三种传递方法都可以
+
+        ourShader.setMat4("projection", projection); // 投影矩阵很少有变化，所以我们将其定义在外面
 
         // double  timeValue = glfwGetTime();
         // float xValue = static_cast<float>(sin(timeValue) / 2.0f);
@@ -196,9 +204,6 @@ int main() {
         glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);//绘制模式、顶点个数、索引类型、EBO偏移量
         //glDrawArrays(GL_TRIANGLES, 0, 3); // 第一个参数表示绘制类型（三角形），0表示起始索引，3表示顶点数
 
-        //第二个图形
-        glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(transform2));
-        glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 
 
         // 检查并调用事件，交换缓冲
