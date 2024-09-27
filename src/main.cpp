@@ -24,6 +24,15 @@ const unsigned int HEIGHT = 600;
 // 混合的第二个纹理透明度
 float mixValue = 0.2f;
 
+// 用于lookat矩阵函数的三个变量（非直接）
+glm::vec3 cameraPos   = glm::vec3(0.0f, 0.0f,  3.0f); // 摄像头位置
+glm::vec3 cameraFront = glm::vec3(0.0f, 0.0f, -1.0f); // 摄像头前向量
+glm::vec3 cameraUp    = glm::vec3(0.0f, 1.0f,  0.0f); // 上向量
+
+// 计算上一帧渲染的时间
+float deltaTime = 0.0f; // 当前帧与上一帧的时间差
+float lastFrame = 0.0f; // 上一帧的时间
+
 int main() {
 
     glfwInit(); // 初始化GLFW，为后续GLFW操作做全局设置
@@ -202,6 +211,11 @@ int main() {
     // 渲染循环
     while(!glfwWindowShouldClose(window))
     {
+        // 计算每帧的时间用于平衡不同用户移动摄像头的设备显示速度
+        float currentFrame = static_cast<float>(glfwGetTime());
+        deltaTime = currentFrame - lastFrame;
+        lastFrame = currentFrame;
+
         // 输入
         processInput(window); // 按键控制，Esc退出程序
 
@@ -228,10 +242,7 @@ int main() {
         // 观察矩阵
         glm::mat4 view = glm::mat4(1.0f);
         // view = glm::translate(view, glm::vec3(0.0f, 0.0f, -3.0f)); // 注意，我们将矩阵向我们要进行移动场景的反方向移动。
-        float radius = 10.0f;
-        float camX = sin(glfwGetTime()) * radius;
-        float camZ = cos(glfwGetTime()) * radius;
-        view = glm::lookAt(glm::vec3(camX, 0.0f, camZ), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+        view = glm::lookAt(cameraPos, cameraFront, cameraUp);
 
         // 投影矩阵
         glm::mat4 projection = glm::mat4(1.0f);
@@ -300,4 +311,15 @@ void processInput(GLFWwindow *window)
         if (mixValue <= 0.0f)
             mixValue = 0.0f;
     }
+
+    //W、A、S、D控制摄像头方向
+    float cameraSpeed = 5.0f * deltaTime; 
+    if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
+        cameraPos += cameraSpeed * cameraFront;
+    if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
+        cameraPos -= cameraSpeed * cameraFront;
+    if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS)
+        cameraPos -= glm::normalize(glm::cross(cameraFront, cameraUp)) * cameraSpeed;
+    if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
+        cameraPos += glm::normalize(glm::cross(cameraFront, cameraUp)) * cameraSpeed;
 }
