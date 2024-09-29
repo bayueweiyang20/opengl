@@ -11,13 +11,16 @@
 #include "learnopengl/shader_s.h"
 #include "learnopengl/stb_image.h"
 
-//回调函数，在每次窗口大小被调整的时候被调用，使视口大小跟随窗口大小变化
+// 回调函数，在每次窗口大小被调整的时候被调用，使视口大小跟随窗口大小变化
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
-
-//输入控制，若按下了返回键(Esc)，程序在下次循环关闭
+//鼠标回调函数
+void mouse_callback(GLFWwindow* window, double xpos, double ypos);
+// 鼠标滚轮回调函数
+void scroll_callback(GLFWwindow* window, double xoffset, double yoffset);
+// 输入控制，若按下了返回键(Esc)，程序在下次循环关闭
 void processInput(GLFWwindow *window);
 
-//设置长宽
+// 设置长宽
 const unsigned int WIDTH = 800;
 const unsigned int HEIGHT = 600;
 
@@ -28,6 +31,14 @@ float mixValue = 0.2f;
 glm::vec3 cameraPos   = glm::vec3(0.0f, 0.0f,  3.0f); // 摄像头位置
 glm::vec3 cameraFront = glm::vec3(0.0f, 0.0f, -1.0f); // 摄像头前向量
 glm::vec3 cameraUp    = glm::vec3(0.0f, 1.0f,  0.0f); // 上向量
+
+// 设置有关鼠标移动和滚轮滚动的变量
+bool firstMouse = true;
+float yaw   = -90.0f;	
+float pitch =  0.0f;
+float lastX =  800.0f / 2.0;
+float lastY =  600.0 / 2.0;
+float fov   =  45.0f;
 
 // 计算上一帧渲染的时间
 float deltaTime = 0.0f; // 当前帧与上一帧的时间差
@@ -48,7 +59,12 @@ int main() {
         return -1;
     }
     glfwMakeContextCurrent(window); // 通知GLFW将我们窗口的上下文设置为当前线程的主上下文
-    glfwSetFramebufferSizeCallback(window, framebuffer_size_callback); // 告诉GLFW我们希望每当窗口调整大小的时候调用
+    glfwSetFramebufferSizeCallback(window, framebuffer_size_callback); // 回调函数，告诉GLFW我们希望每当窗口调整大小的时候调用
+    glfwSetCursorPosCallback(window, mouse_callback); // 鼠标回调函数
+    glfwSetScrollCallback(window, scroll_callback); // 滚轮回调函数
+
+     // 捕捉光标，告诉glfw捕捉鼠标
+    glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 
     if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) // GLAD是用来管理OpenGL的函数指针，在调用任何OpenGL的函数之前我们需要初始化GLAD
     {
@@ -246,7 +262,7 @@ int main() {
 
         // 投影矩阵
         glm::mat4 projection = glm::mat4(1.0f);
-        projection = glm::perspective(glm::radians(45.0f), (float)WIDTH / (float)HEIGHT, 0.1f, 100.0f);
+        projection = glm::perspective(glm::radians(fov), (float)WIDTH / (float)HEIGHT, 0.1f, 100.0f);
 
         //unsigned int modelLoc = glGetUniformLocation(ourShader.ID, "model");
         //glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
@@ -322,4 +338,52 @@ void processInput(GLFWwindow *window)
         cameraPos -= glm::normalize(glm::cross(cameraFront, cameraUp)) * cameraSpeed;
     if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
         cameraPos += glm::normalize(glm::cross(cameraFront, cameraUp)) * cameraSpeed;
+}
+
+// 一旦鼠标移动，就会调用回调函数
+void mouse_callback(GLFWwindow* window, double xposIn, double yposIn)
+{
+    float xpos = static_cast<float>(xposIn);
+    float ypos = static_cast<float>(yposIn);
+
+    if (firstMouse)
+    {
+        lastX = xpos;
+        lastY = ypos;
+        firstMouse = false;
+    }
+
+    float xoffset = xpos - lastX;
+    float yoffset = lastY - ypos; // reversed since y-coordinates go from bottom to top
+    lastX = xpos;
+    lastY = ypos;
+
+    float sensitivity = 0.1f; // change this value to your liking
+    xoffset *= sensitivity;
+    yoffset *= sensitivity;
+
+    yaw += xoffset;
+    pitch += yoffset;
+
+    // make sure that when pitch is out of bounds, screen doesn't get flipped
+    if (pitch > 89.0f)
+        pitch = 89.0f;
+    if (pitch < -89.0f)
+        pitch = -89.0f;
+
+    glm::vec3 front;
+    front.x = cos(glm::radians(yaw)) * cos(glm::radians(pitch));
+    front.y = sin(glm::radians(pitch));
+    front.z = sin(glm::radians(yaw)) * cos(glm::radians(pitch));
+    cameraFront = glm::normalize(front);
+}
+
+// 一旦滚轮滚动，就调用该回调函数
+void scroll_callback(GLFWwindow* window, double xoffset, double yoffset)
+{
+    fov -= (float)yoffset;
+    if (fov < 1.0f)
+        fov = 1.0f;
+    if (fov > 45.0f)
+        fov = 45.0f;
 }
