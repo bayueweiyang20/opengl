@@ -10,6 +10,7 @@
 
 #include "learnopengl/shader_s.h"
 #include "learnopengl/stb_image.h"
+#include "learnopengl/camera.h"
 
 // 回调函数，在每次窗口大小被调整的时候被调用，使视口大小跟随窗口大小变化
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
@@ -24,21 +25,14 @@ void processInput(GLFWwindow *window);
 const unsigned int WIDTH = 800;
 const unsigned int HEIGHT = 600;
 
+// 摄像头
+Camera camera(glm::vec3(0.0f, 0.0f, 3.0f));
+float lastX = WIDTH / 2.0f;
+float lastY = HEIGHT / 2.0f;
+bool firstMouse = true;
+
 // 混合的第二个纹理透明度
 float mixValue = 0.2f;
-
-// 用于lookat矩阵函数的三个变量（非直接）
-glm::vec3 cameraPos   = glm::vec3(0.0f, 0.0f,  3.0f); // 摄像头位置
-glm::vec3 cameraFront = glm::vec3(0.0f, 0.0f, -1.0f); // 摄像头前向量
-glm::vec3 cameraUp    = glm::vec3(0.0f, 1.0f,  0.0f); // 上向量
-
-// 设置有关鼠标移动和滚轮滚动的变量
-bool firstMouse = true;
-float yaw   = -90.0f;	
-float pitch =  0.0f;
-float lastX =  800.0f / 2.0;
-float lastY =  600.0 / 2.0;
-float fov   =  45.0f;
 
 // 计算上一帧渲染的时间
 float deltaTime = 0.0f; // 当前帧与上一帧的时间差
@@ -136,10 +130,6 @@ int main() {
         glm::vec3( 1.5f,  0.2f, -1.5f), 
         glm::vec3(-1.3f,  1.0f, -1.5f)  
     };
-    // unsigned int indices[] = {  // 注意索引从0开始!
-    //     0, 1, 3,  // 第一个三角形
-    //     1, 2, 3   // 第二个三角形
-    // };
 
     // VAO存储顶点属性，VBO存储顶点数据
     unsigned int VBO, VAO;
@@ -249,29 +239,14 @@ int main() {
 
         // 设置混合度
         ourShader.setFloat("mixValue", mixValue);
-
-        // 模型矩阵
-        //glm::mat4 model = glm::mat4(1.0f); 
-        //model = glm::rotate(model, (float)glfwGetTime() * glm::radians(50.0f), glm::vec3(0.5f, 1.0f, 0.0f));// 旋转，角度随时间变化
-        //model = glm::translate(model, glm::vec3(0.5f, -0.5f, 0.0f)); // 位移
         
         // 观察矩阵
-        glm::mat4 view = glm::mat4(1.0f);
-        // view = glm::translate(view, glm::vec3(0.0f, 0.0f, -3.0f)); // 注意，我们将矩阵向我们要进行移动场景的反方向移动。
-        view = glm::lookAt(cameraPos, cameraFront, cameraUp);
-
+        glm::mat4 view = camera.GetViewMatrix();
+        ourShader.setMat4("view", view);
         // 投影矩阵
-        glm::mat4 projection = glm::mat4(1.0f);
-        projection = glm::perspective(glm::radians(fov), (float)WIDTH / (float)HEIGHT, 0.1f, 100.0f);
-
-        //unsigned int modelLoc = glGetUniformLocation(ourShader.ID, "model");
-        //glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
-
-        int viewLoc = glGetUniformLocation(ourShader.ID, "view");
-        glUniformMatrix4fv(viewLoc, 1, GL_FALSE, &view[0][0]); // 上下三种传递方法都可以
-
+        glm::mat4 projection = glm::perspective(glm::radians(camera.Zoom), (float)WIDTH / (float)HEIGHT, 0.1f, 100.0f);
         ourShader.setMat4("projection", projection); // 投影矩阵很少有变化，所以我们将其定义在外面
-
+        
         glBindVertexArray(VAO); // 目前只有一个VAO，不需要每次都绑定
         // 画出多个不同位置的正方体
         for(unsigned int i = 0; i < 10; i++)
@@ -284,8 +259,6 @@ int main() {
 
             glDrawArrays(GL_TRIANGLES, 0, 36);
         }
-        //glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);//绘制模式、顶点个数、索引类型、EBO偏移量
-        //glDrawArrays(GL_TRIANGLES, 0, 3); // 第一个参数表示绘制类型（三角形），0表示起始索引，3表示顶点数
 
 
 
@@ -329,15 +302,14 @@ void processInput(GLFWwindow *window)
     }
 
     //W、A、S、D控制摄像头方向
-    float cameraSpeed = 5.0f * deltaTime; 
     if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
-        cameraPos += cameraSpeed * cameraFront;
+        camera.ProcessKeyboard(FORWARD, deltaTime);
     if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
-        cameraPos -= cameraSpeed * cameraFront;
+        camera.ProcessKeyboard(BACKWARD, deltaTime);
     if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS)
-        cameraPos -= glm::normalize(glm::cross(cameraFront, cameraUp)) * cameraSpeed;
+        camera.ProcessKeyboard(LEFT, deltaTime);
     if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
-        cameraPos += glm::normalize(glm::cross(cameraFront, cameraUp)) * cameraSpeed;
+        camera.ProcessKeyboard(RIGHT, deltaTime);
 }
 
 // 一旦鼠标移动，就会调用回调函数
@@ -354,36 +326,16 @@ void mouse_callback(GLFWwindow* window, double xposIn, double yposIn)
     }
 
     float xoffset = xpos - lastX;
-    float yoffset = lastY - ypos; // reversed since y-coordinates go from bottom to top
+    float yoffset = lastY - ypos;
+
     lastX = xpos;
     lastY = ypos;
 
-    float sensitivity = 0.1f; // change this value to your liking
-    xoffset *= sensitivity;
-    yoffset *= sensitivity;
-
-    yaw += xoffset;
-    pitch += yoffset;
-
-    // make sure that when pitch is out of bounds, screen doesn't get flipped
-    if (pitch > 89.0f)
-        pitch = 89.0f;
-    if (pitch < -89.0f)
-        pitch = -89.0f;
-
-    glm::vec3 front;
-    front.x = cos(glm::radians(yaw)) * cos(glm::radians(pitch));
-    front.y = sin(glm::radians(pitch));
-    front.z = sin(glm::radians(yaw)) * cos(glm::radians(pitch));
-    cameraFront = glm::normalize(front);
+    camera.ProcessMouseMovement(xoffset, yoffset);
 }
 
 // 一旦滚轮滚动，就调用该回调函数
 void scroll_callback(GLFWwindow* window, double xoffset, double yoffset)
 {
-    fov -= (float)yoffset;
-    if (fov < 1.0f)
-        fov = 1.0f;
-    if (fov > 45.0f)
-        fov = 45.0f;
+    camera.ProcessMouseScroll(static_cast<float>(yoffset));
 }

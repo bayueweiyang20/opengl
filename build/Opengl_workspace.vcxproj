@@ -389,6 +389,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="D:\vscode_wokerspace\opengl_use1\src\camera.cpp" />
     <ClCompile Include="D:\vscode_wokerspace\opengl_use1\src\change_image.cpp" />
     <ClCompile Include="D:\vscode_wokerspace\opengl_use1\src\main.cpp" />
     <ClCompile Include="D:\vscode_wokerspace\opengl_use1\src\shader_s.cpp" />
