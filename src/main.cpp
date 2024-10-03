@@ -31,6 +31,9 @@ float lastX = WIDTH / 2.0f;
 float lastY = HEIGHT / 2.0f;
 bool firstMouse = true;
 
+// 光源位置
+glm::vec3 lightPos(1.2f, 1.0f, 2.0f);
+
 // 混合的第二个纹理透明度
 float mixValue = 0.2f;
 
@@ -70,6 +73,7 @@ int main() {
     glEnable(GL_DEPTH_TEST); // 深度测试
 
     Shader ourShader("./shaders/shader.vs", "./shaders/shader.fs");
+    Shader lampShader("./shaders/lampshader.vs", "./shaders/lampshader.fs");
 
     //顶点输入
     float vertices[] = {
@@ -144,74 +148,20 @@ int main() {
     glBindBuffer(GL_ARRAY_BUFFER, VBO);
     glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
 
-    // 把索引复制到缓冲里
-    // glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
-    // glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
-
     // 设置顶点属性指针
     // 位置属性
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)0);
     glEnableVertexAttribArray(0); // 启用顶点属性（默认禁用）
-    // 颜色属性
-    //glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(3* sizeof(float)));
-    //glEnableVertexAttribArray(1);
-    //纹理属性
-    glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)(3 * sizeof(float)));
-    glEnableVertexAttribArray(1);
 
-    // 加载和创建纹理
-    unsigned int texture1,texture2;
-    glGenTextures(1, &texture1); // ID引用
-    glBindTexture(GL_TEXTURE_2D, texture1); // 绑定该纹理
-    // 为当前绑定的纹理对象设置环绕、过滤方式
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);   
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-    // 加载并生成纹理1
-    int width, height, nrChannels;
-    stbi_set_flip_vertically_on_load(true); // OpenGL和图片定义的y轴是反的，所以我们这里需要翻个方向
-    unsigned char *data = stbi_load("./images/container.jpg", &width, &height, &nrChannels, 0);
-    if (data)
-    {
-        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data); // 纹理目标、多级渐远纹理级别、存储格式、长宽、0...
-        glGenerateMipmap(GL_TEXTURE_2D); // 为当前绑定的纹理对象附加上纹理图像
-    }
-    else
-    {
-        std::cout << "Failed to load texture" << std::endl;
-    }
-    // 加载并生成纹理2
-    glGenTextures(1, &texture2); // ID引用
-    glBindTexture(GL_TEXTURE_2D, texture2); // 绑定该纹理
-    // 为当前绑定的纹理对象设置环绕、过滤方式
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_MIRRORED_REPEAT);   
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_MIRRORED_REPEAT);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-    data = stbi_load("./images/awesomeface.png", &width, &height, &nrChannels, 0);
-    if (data)
-    {
-        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data); // 这里使用GL_RGBA，多一个透明度
-        glGenerateMipmap(GL_TEXTURE_2D);
-    }
-    else
-    {
-        std::cout << "Failed to load texture" << std::endl;
-    }
-    stbi_image_free(data);
-
-    // 定义哪个uniform采样器对应哪个纹理单元
-    ourShader.use(); // 不要忘记在设置uniform变量之前激活着色器程序！
-    // 手动设置
-    glUniform1i(glGetUniformLocation(ourShader.ID, "texture1"), 0);
-    // 或者使用着色器类设置
-    ourShader.setInt("texture2", 1);
-
-    // 对 glVertexAttribPointer 的调用将 VBO 注册为顶点属性绑定的顶点缓冲对象，因此可以安全地取消绑定
-    glBindBuffer(GL_ARRAY_BUFFER, 0); 
-    // 通常情况不会取消绑定 VAO（还有 VBO）
-    glBindVertexArray(0); //释放图像内存
+     // 光源lightVAO
+    unsigned int lightVAO;
+    glGenVertexArrays(1, &lightVAO);
+    glBindVertexArray(lightVAO);
+    // 只需要绑定VBO不用再次设置VBO的数据，因为箱子的VBO数据中已经包含了正确的立方体顶点数据
+    glBindBuffer(GL_ARRAY_BUFFER, VBO);
+    // 设置灯立方体的顶点属性（对我们的灯来说仅仅只有位置数据）
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)0);
+    glEnableVertexAttribArray(0);
 
 
     // 渲染循环
@@ -229,17 +179,9 @@ int main() {
         glClearColor(0.2f, 0.3f, 0.3f, 1.0f); // 在新渲染前需要清屏
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // 清除深度测试
 
-        // 绑定多个纹理
-        glActiveTexture(GL_TEXTURE0);
-        glBindTexture(GL_TEXTURE_2D, texture1);
-        glActiveTexture(GL_TEXTURE1);
-        glBindTexture(GL_TEXTURE_2D, texture2);
-
         ourShader.use(); // 激活着色程序
-
-        // 设置混合度
-        ourShader.setFloat("mixValue", mixValue);
-        
+        ourShader.setVec3("objectColor", 1.0f, 0.5f, 0.31f);
+        ourShader.setVec3("lightColor",  1.0f, 1.0f, 1.0f);
         // 观察矩阵
         glm::mat4 view = camera.GetViewMatrix();
         ourShader.setMat4("view", view);
@@ -247,9 +189,9 @@ int main() {
         glm::mat4 projection = glm::perspective(glm::radians(camera.Zoom), (float)WIDTH / (float)HEIGHT, 0.1f, 100.0f);
         ourShader.setMat4("projection", projection); // 投影矩阵很少有变化，所以我们将其定义在外面
         
-        glBindVertexArray(VAO); // 目前只有一个VAO，不需要每次都绑定
+        glBindVertexArray(VAO);
         // 画出多个不同位置的正方体
-        for(unsigned int i = 0; i < 10; i++)
+        for(unsigned int i = 0; i < 1; i++)
         {
             glm::mat4 model = glm::mat4(1.0f);
             model = glm::translate(model, cubePositions[i]);
@@ -260,6 +202,15 @@ int main() {
             glDrawArrays(GL_TRIANGLES, 0, 36);
         }
 
+        lampShader.use();
+        lampShader.setMat4("projection", projection);
+        lampShader.setMat4("view", view);
+        glm::mat4 model = glm::mat4(1.0f);
+        model = glm::translate(model, lightPos);
+        model = glm::scale(model, glm::vec3(0.2f));
+        lampShader.setMat4("model", model);
+        glBindVertexArray(lightVAO);
+        glDrawArrays(GL_TRIANGLES, 0, 36);
 
 
         // 检查并调用事件，交换缓冲
