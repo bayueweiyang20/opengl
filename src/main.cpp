@@ -164,14 +164,30 @@ int main() {
         processInput(window); // 按键控制，Esc退出程序
 
         // 渲染
-        glClearColor(0.2f, 0.3f, 0.3f, 1.0f); // 在新渲染前需要清屏
+        glClearColor(0.1f, 0.1f, 0.1f, 1.0f); // 在新渲染前需要清屏并设置视图颜色
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // 清除深度测试
 
         ourShader.use(); // 激活着色程序
         ourShader.setVec3("objectColor", 1.0f, 0.5f, 0.31f);
-        ourShader.setVec3("lightColor",  1.0f, 1.0f, 1.0f);
-        ourShader.setVec3("lightPos", lightPos);
+        ourShader.setVec3("light.position", lightPos);
         ourShader.setVec3("viewPos", camera.Position);
+        ourShader.setVec3("material.ambient",  1.0f, 0.5f, 0.31f);
+        ourShader.setVec3("material.diffuse",  1.0f, 0.5f, 0.31f);
+        ourShader.setVec3("material.specular", 0.5f, 0.5f, 0.5f);
+        ourShader.setFloat("material.shininess", 32.0f);
+        glm::vec3 lightColor;
+        lightColor.x = sin(glfwGetTime() * 2.0f);
+        lightColor.y = sin(glfwGetTime() * 0.7f);
+        lightColor.z = sin(glfwGetTime() * 1.3f);
+
+        glm::vec3 diffuseColor = lightColor   * glm::vec3(0.5f); // 降低影响
+        glm::vec3 ambientColor = diffuseColor * glm::vec3(0.2f); // 很低的影响
+
+        ourShader.setVec3("light.ambient", ambientColor);
+        ourShader.setVec3("light.diffuse", diffuseColor);
+        // ourShader.setVec3("light.ambient",  0.2f, 0.2f, 0.2f);
+        // ourShader.setVec3("light.diffuse",  0.5f, 0.5f, 0.5f); // 将光照调暗了一些以搭配场景
+        ourShader.setVec3("light.specular", 1.0f, 1.0f, 1.0f); 
         // 模型矩阵
         glm::mat4 model = glm::mat4(1.0f); 
         ourShader.setMat4("model", model);
