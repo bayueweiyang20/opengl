@@ -160,10 +160,12 @@ int main() {
     // 加载纹理
     unsigned int diffuseMap = loadTexture(std::string("./images/container2.png").c_str());
     unsigned int specularMap = loadTexture(std::string("./images/container2_specular.png").c_str());
+    unsigned int emissionMap = loadTexture(std::string("./images/matrix.jpg").c_str());
 
     ourShader.use(); 
     ourShader.setInt("material.diffuse", 0);
     ourShader.setInt("material.specular", 1);
+    ourShader.setInt("material.emission", 2);
 
     // 渲染循环
     while(!glfwWindowShouldClose(window))
@@ -183,11 +185,11 @@ int main() {
         ourShader.use(); // 激活着色程序
         ourShader.setVec3("light.position", lightPos);
         ourShader.setVec3("viewPos", camera.Position);
-        ourShader.setVec3("material.specular", 0.5f, 0.5f, 0.5f);
         ourShader.setFloat("material.shininess", 32.0f);
         ourShader.setVec3("light.ambient",  0.2f, 0.2f, 0.2f);
         ourShader.setVec3("light.diffuse",  0.5f, 0.5f, 0.5f); // 将光照调暗了一些以搭配场景
         ourShader.setVec3("light.specular", 1.0f, 1.0f, 1.0f); 
+        ourShader.setFloat("matrixmove", abs(sin(glfwGetTime())));
         // 模型矩阵
         glm::mat4 model = glm::mat4(1.0f); 
         ourShader.setMat4("model", model);
@@ -199,11 +201,12 @@ int main() {
         ourShader.setMat4("projection", projection); // 投影矩阵很少有变化，所以我们将其定义在外面
         
         // 绑定纹理
-        // bind diffuse map
         glActiveTexture(GL_TEXTURE0);
         glBindTexture(GL_TEXTURE_2D, diffuseMap);
         glActiveTexture(GL_TEXTURE1);
         glBindTexture(GL_TEXTURE_2D, specularMap);
+        glActiveTexture(GL_TEXTURE2);
+        glBindTexture(GL_TEXTURE_2D, emissionMap);
 
         glBindVertexArray(VAO);
         glDrawArrays(GL_TRIANGLES, 0, 36);

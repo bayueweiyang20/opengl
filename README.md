@@ -46,3 +46,9 @@ ambient²ÄÖÊÏòÁ¿¶¨ÒåÁËÔÚ»·¾³¹âÕÕÏÂÕâ¸ö±íÃæ·´ÉäµÄÊÇÊ²Ã´ÑÕÉ«£¬Í¨³£Óë±íÃæµÄÑÕÉ«ÏàÍ¬¡
 ÓÉÓÚÏä×Ó´ó²¿·Ö¶¼ÓÉÄ¾Í·Ëù×é³É£¬¶øÇÒÄ¾Í·²ÄÖÊÓ¦¸ÃÃ»ÓÐ¾µÃæ¸ß¹â£¬ËùÒÔÂþ·´ÉäÎÆÀíµÄÕû¸öÄ¾Í·²¿·ÖÈ«²¿¶¼×ª»»³ÉÁËºÚÉ«¡£Ïä×Ó¸ÖÖÆ±ß¿òµÄ¾µÃæ¹âÇ¿¶ÈÊÇÓÐÏ¸Î¢±ä»¯µÄ£¬¸ÖÌú±¾Éí»á±È½ÏÈÝÒ×ÊÜµ½¾µÃæ¸ß¹âµÄÓ°Ïì£¬¶øÁÑ·ìÔò²»»á¡£  
 ÓÉÓÚÎÒÃÇÕýÔÚÍ¬Ò»¸öÆ¬¶Î×ÅÉ«Æ÷ÖÐÊ¹ÓÃÁíÒ»¸öÎÆÀí²ÉÑùÆ÷£¬ÎÒÃÇ±ØÐëÒª¶Ô¾µÃæ¹âÌùÍ¼Ê¹ÓÃÒ»¸ö²»Í¬µÄÎÆÀíµ¥Ôª¡£  
 ¹âÕÕÌùÍ¼×Ü½á£º¿ÉÒÔÀí½âÎªÒýÈëÌùÍ¼£¬È»ºóÔÚÌùÍ¼ÉÏÊµÏÖ¹âÕÕ£¬ÕâÀïÎÆÀíµÄÊ¹ÓÃ°üÀ¨£ºÎÆÀíÊôÐÔ¡¢ÎÆÀí¼ÓÔØ·â×°¡¢uniform´«µÝID¡¢äÖÈ¾Ê±¼¤»î¡£ÔÚ½øÐÐ²»Í¬²ÄÖÊµÄ¹âÕÕÇø·ÖÊ±£¬Ê¹ÓÃÁË¶à¸öÎÆÀí·Ö±ð´¦ÀíÂþ·´ÉäºÍ¾µÃæ·´Éä£¬¶ÔÕûÌåµÄÌùÍ¼½øÐÐÂþ·´Éä£¬¶ÔÒ»Ð©¾µÃæ·´ÉäÃ÷ÏÔµÄ²ÄÖÊ£¨±ÈÈç¸Ö£©½øÐÐ¾µÃæ·´Éä¡£  
+  
+Á·Ï°Ìâ  
+1. ÈÃÄ¾Í·ÏÔÊ¾¾µÃæ¸ß¹â¶ø¸ÖÖÆ±ßÔµ²»·´¹â
+vec3 specular = light.specular * spec * (vec3(1.0) - vec3(texture(material.specular, TexCoords)));ÔÚ¾µÃæ¹âÕÕÖÐÊ¹ÓÃÕâ¸ö£¬ÈÃ°×±äºÚ¡¢ºÚ±ä°×¡£  
+2. Ìí¼ÓÒ»¸ö½Ð×ö·ÅÉä¹âÌùÍ¼(Emission Map)µÄ¶«Î÷£¬ËüÊÇÒ»¸ö´¢´æÁËÃ¿¸öÆ¬¶ÎµÄ·¢¹âÖµ(Emission Value)µÄÌùÍ¼¡£·¢¹âÖµÊÇÒ»¸ö°üº¬£¨¼ÙÉè£©¹âÔ´µÄÎïÌå·¢¹â(Emit)Ê±¿ÉÄÜÏÔÏÖµÄÑÕÉ«£¬ÕâÑùµÄ»°ÎïÌå¾ÍÄÜ¹»ºöÂÔ¹âÕÕÌõ¼þ½øÐÐ·¢¹â(Glow)¡£ÓÎÏ·ÖÐÄ³¸öÎïÌåÔÚ·¢¹âµÄÊ±ºò£¬ÄãÍ¨³£¿´µ½µÄ¾ÍÊÇ·ÅÉä¹âÌùÍ¼£¨±ÈÈç »úÆ÷ÈËµÄÑÛ£¬»òÊÇÏä×ÓÉÏµÄµÆ´ø£©¡£½«Õâ¸öÎÆÀí£¨×÷ÕßÎª creativesam£©×÷Îª·ÅÉä¹âÌùÍ¼Ìí¼Óµ½Ïä×ÓÉÏ£¬²úÉúÕâÐ©×ÖÄ¸¶¼ÔÚ·¢¹âµÄÐ§¹û¡£
+Ôö¼ÓÁËÒ»ÖÖ¡°·´Éä¹â¡±·ÅÉä¹â£¬Í¨¹ýÒ»¸öÐÂµÄÎÆÀíÏÔÊ¾³öÀ´¡£ÕâÀïÁíÍâ¿ØÖÆÎÆÀíÖÐµÄÑÕÉ«Î»ÒÆ£¬²úÉú·ÅÉä¹âÒÆ¶¯µÄÐ§¹û¡£
