@@ -6,7 +6,8 @@ struct Material {
     float     shininess;
 }; 
 struct Light {
-    vec3 position;
+    // vec3 position; // 使用定向光就不再需要了
+    vec3 direction;
 
     vec3 ambient;
     vec3 diffuse;
@@ -30,7 +31,7 @@ void main()
     vec3 ambient = light.ambient * vec3(texture(material.diffuse, TexCoords)); // 加上纹理
     // 漫反射
     vec3  norm = normalize(Normal);
-    vec3  lightDir = normalize(light.position - FragPos);
+    vec3  lightDir = normalize(-light.direction);
     float diff = max(dot(norm, lightDir), 0.0);
     vec3 diffuse = light.diffuse * diff * vec3(texture(material.diffuse, TexCoords)); // 加上纹理
     // 镜面光

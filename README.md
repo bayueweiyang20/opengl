@@ -52,3 +52,8 @@ ambient²ÄÖÊÏòÁ¿¶¨ÒåÁËÔÚ»·¾³¹âÕÕÏÂÕâ¸ö±íÃæ·´ÉäµÄÊÇÊ²Ã´ÑÕÉ«£¬Í¨³£Óë±íÃæµÄÑÕÉ«ÏàÍ¬¡
 vec3 specular = light.specular * spec * (vec3(1.0) - vec3(texture(material.specular, TexCoords)));ÔÚ¾µÃæ¹âÕÕÖÐÊ¹ÓÃÕâ¸ö£¬ÈÃ°×±äºÚ¡¢ºÚ±ä°×¡£  
 2. Ìí¼ÓÒ»¸ö½Ð×ö·ÅÉä¹âÌùÍ¼(Emission Map)µÄ¶«Î÷£¬ËüÊÇÒ»¸ö´¢´æÁËÃ¿¸öÆ¬¶ÎµÄ·¢¹âÖµ(Emission Value)µÄÌùÍ¼¡£·¢¹âÖµÊÇÒ»¸ö°üº¬£¨¼ÙÉè£©¹âÔ´µÄÎïÌå·¢¹â(Emit)Ê±¿ÉÄÜÏÔÏÖµÄÑÕÉ«£¬ÕâÑùµÄ»°ÎïÌå¾ÍÄÜ¹»ºöÂÔ¹âÕÕÌõ¼þ½øÐÐ·¢¹â(Glow)¡£ÓÎÏ·ÖÐÄ³¸öÎïÌåÔÚ·¢¹âµÄÊ±ºò£¬ÄãÍ¨³£¿´µ½µÄ¾ÍÊÇ·ÅÉä¹âÌùÍ¼£¨±ÈÈç »úÆ÷ÈËµÄÑÛ£¬»òÊÇÏä×ÓÉÏµÄµÆ´ø£©¡£½«Õâ¸öÎÆÀí£¨×÷ÕßÎª creativesam£©×÷Îª·ÅÉä¹âÌùÍ¼Ìí¼Óµ½Ïä×ÓÉÏ£¬²úÉúÕâÐ©×ÖÄ¸¶¼ÔÚ·¢¹âµÄÐ§¹û¡£
 Ôö¼ÓÁËÒ»ÖÖ¡°·´Éä¹â¡±·ÅÉä¹â£¬Í¨¹ýÒ»¸öÐÂµÄÎÆÀíÏÔÊ¾³öÀ´¡£ÕâÀïÁíÍâ¿ØÖÆÎÆÀíÖÐµÄÑÕÉ«Î»ÒÆ£¬²úÉú·ÅÉä¹âÒÆ¶¯µÄÐ§¹û¡£
+  
+# Í¶¹âÎï
+½«¹âÍ¶Éä(Cast)µ½ÎïÌåµÄ¹âÔ´½Ð×öÍ¶¹âÎï(Light Caster)¡£ÔÚÕâÀïÎÒÃÇ½«»áÌÖÂÛ¼¸ÖÖ²»Í¬ÀàÐÍµÄÍ¶¹âÎï¡£Ñ§»áÄ£Äâ²»Í¬ÖÖÀàµÄ¹âÔ´ÊÇÓÖÒ»¸öÄÜ¹»½øÒ»²½·á¸»³¡¾°µÄ¹¤¾ß¡£  
+## ¶¨Ïò¹â£ºÆ½ÐÐ¹â
+µ±Ò»¸ö¹âÔ´´¦ÓÚºÜÔ¶µÄµØ·½Ê±£¬À´×Ô¹âÔ´µÄÃ¿Ìõ¹âÏß¾Í»á½üËÆÓÚ»¥ÏàÆ½ÐÐ¡£²»ÂÛÎïÌåºÍ/»òÕß¹Û²ìÕßµÄÎ»ÖÃ£¬¿´ÆðÀ´ºÃÏñËùÓÐµÄ¹â¶¼À´×ÔÓÚÍ¬Ò»¸ö·½Ïò¡£µ±ÎÒÃÇÊ¹ÓÃÒ»¸ö¼ÙÉè¹âÔ´´¦ÓÚÎÞÏÞÔ¶´¦µÄÄ£ÐÍÊ±£¬Ëü¾Í±»³ÆÎª¶¨Ïò¹â£¬ÒòÎªËüµÄËùÓÐ¹âÏß¶¼ÓÐ×ÅÏàÍ¬µÄ·½Ïò£¬ËüÓë¹âÔ´µÄÎ»ÖÃÊÇÃ»ÓÐ¹ØÏµµÄ¡£±ÈÈçÌ«Ñô¡£  
