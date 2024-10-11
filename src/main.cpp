@@ -196,13 +196,16 @@ int main() {
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // 清除深度测试
 
         ourShader.use(); // 激活着色程序
-        //ourShader.setVec3("light.position", lightPos);
-        ourShader.setVec3("light.direction", -0.2f, -1.0f, -0.3f);
+        ourShader.setVec3("light.position", lightPos);
+        // ourShader.setVec3("light.direction", -0.2f, -1.0f, -0.3f);
         ourShader.setVec3("viewPos", camera.Position);
         ourShader.setFloat("material.shininess", 32.0f);
         ourShader.setVec3("light.ambient",  0.2f, 0.2f, 0.2f);
         ourShader.setVec3("light.diffuse",  0.5f, 0.5f, 0.5f); // 将光照调暗了一些以搭配场景
         ourShader.setVec3("light.specular", 1.0f, 1.0f, 1.0f); 
+        ourShader.setFloat("light.constant",  1.0f);
+        ourShader.setFloat("light.linear",    0.09f);
+        ourShader.setFloat("light.quadratic", 0.032f);
         ourShader.setFloat("matrixmove", float(abs(sin(glfwGetTime()))));
         // 模型矩阵
         glm::mat4 model = glm::mat4(1.0f); 
@@ -235,15 +238,15 @@ int main() {
         }
         // glDrawArrays(GL_TRIANGLES, 0, 36);
 
-        // lampShader.use();
-        // lampShader.setMat4("projection", projection);
-        // lampShader.setMat4("view", view);
-        // model = glm::mat4(1.0f);
-        // model = glm::translate(model, lightPos);
-        // model = glm::scale(model, glm::vec3(0.2f));
-        // lampShader.setMat4("model", model);
-        // glBindVertexArray(lightVAO);
-        // glDrawArrays(GL_TRIANGLES, 0, 36);
+        lampShader.use();
+        lampShader.setMat4("projection", projection);
+        lampShader.setMat4("view", view);
+        model = glm::mat4(1.0f);
+        model = glm::translate(model, lightPos);
+        model = glm::scale(model, glm::vec3(0.2f));
+        lampShader.setMat4("model", model);
+        glBindVertexArray(lightVAO);
+        glDrawArrays(GL_TRIANGLES, 0, 36);
 
 
         // 检查并调用事件，交换缓冲
