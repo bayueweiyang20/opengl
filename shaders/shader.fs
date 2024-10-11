@@ -6,8 +6,10 @@ struct Material {
     float     shininess;
 }; 
 struct Light {
-    vec3 position; // 使用定向光就不再需要了
-    // vec3 direction;
+    vec3 position;
+    vec3 direction;
+    float cutOff;
+    float outerCutOff;
 
     vec3 ambient;
     vec3 diffuse;
@@ -31,29 +33,65 @@ uniform float matrixmove;
 
 void main()
 {
-    // 环境光
-    vec3 ambient = light.ambient * vec3(texture(material.diffuse, TexCoords)); // 加上纹理
-    // 漫反射
-    vec3  norm = normalize(Normal);
-    vec3  lightDir = normalize(light.position - FragPos);
-    float diff = max(dot(norm, lightDir), 0.0);
-    vec3 diffuse = light.diffuse * diff * vec3(texture(material.diffuse, TexCoords)); // 加上纹理
-    // 镜面光
-    vec3 viewDir = normalize(viewPos-FragPos); // 视线反方向
-    vec3 reflectDir = reflect(-lightDir, norm); // 反射光
-    float spec = pow(max(dot(viewDir, reflectDir), 0.0), material.shininess); // 先计算视线方向与反射方向的点乘（并确保它不是负值），32是高光的反射度
-    vec3 specular = light.specular * spec * vec3(texture(material.specular, TexCoords)); // 计算镜面分量
-    // 衰减
-    float distance    = length(light.position - FragPos);
-    float attenuation = 1.0 / (light.constant + light.linear * distance + light.quadratic * (distance * distance));    
+    vec3 lightDir = normalize(light.position - FragPos);
+    
+    // 检查是否在聚光灯范围内
+    float theta = dot(lightDir, normalize(-light.direction)); 
+    
+    if(theta > light.cutOff) 
+    {    
+        // 环境光
+        vec3 ambient = light.ambient * texture(material.diffuse, TexCoords).rgb;
+        
+        // 漫反射 
+        vec3 norm = normalize(Normal);
+        float diff = max(dot(norm, lightDir), 0.0);
+        vec3 diffuse = light.diffuse * diff * texture(material.diffuse, TexCoords).rgb;  
+        
+        // 镜面光
+        vec3 viewDir = normalize(viewPos - FragPos);
+        vec3 reflectDir = reflect(-lightDir, norm);  
+        float spec = pow(max(dot(viewDir, reflectDir), 0.0), material.shininess);
+        vec3 specular = light.specular * spec * texture(material.specular, TexCoords).rgb;  
+        
+        // 衰减
+        float distance    = length(light.position - FragPos);
+        float attenuation = 1.0 / (light.constant + light.linear * distance + light.quadratic * (distance * distance));    
 
-    ambient  *= attenuation;  
-    diffuse   *= attenuation;
-    specular *= attenuation;
-    // 放射光
-    //vec3 emission = texture(material.emission, TexCoords).rgb;
-    //vec3 emission = texture(material.emission,vec2(TexCoords.x,TexCoords.y+matrixmove)).rgb;
+        diffuse   *= attenuation;
+        specular *= attenuation;   
+            
+        vec3 result = ambient + diffuse + specular;
+        FragColor = vec4(result, 1.0);
+    }
+    else 
+    {
+        // else, use ambient light so scene isn't completely dark outside the spotlight.
+        FragColor = vec4(light.ambient * texture(material.diffuse, TexCoords).rgb, 1.0);
+    }
+    // // 环境光
+    // vec3 ambient = light.ambient * vec3(texture(material.diffuse, TexCoords)); // 加上纹理
+    // // 漫反射
+    // vec3  norm = normalize(Normal);
+    // vec3  lightDir = normalize(light.position - FragPos);
+    // float diff = max(dot(norm, lightDir), 0.0);
+    // vec3 diffuse = light.diffuse * diff * vec3(texture(material.diffuse, TexCoords)); // 加上纹理
+    // // 镜面光
+    // vec3 viewDir = normalize(viewPos-FragPos); // 视线反方向
+    // vec3 reflectDir = reflect(-lightDir, norm); // 反射光
+    // float spec = pow(max(dot(viewDir, reflectDir), 0.0), material.shininess); // 先计算视线方向与反射方向的点乘（并确保它不是负值），32是高光的反射度
+    // vec3 specular = light.specular * spec * vec3(texture(material.specular, TexCoords)); // 计算镜面分量
+    // // 衰减
+    // float distance    = length(light.position - FragPos);
+    // float attenuation = 1.0 / (light.constant + light.linear * distance + light.quadratic * (distance * distance));    
 
-    vec3  result = ambient + diffuse + specular;
-    FragColor = vec4(result, 1.0);
+    // ambient  *= attenuation;  
+    // diffuse   *= attenuation;
+    // specular *= attenuation;
+    // // 放射光
+    // //vec3 emission = texture(material.emission, TexCoords).rgb;
+    // //vec3 emission = texture(material.emission,vec2(TexCoords.x,TexCoords.y+matrixmove)).rgb;
+
+    // vec3  result = ambient + diffuse + specular;
+    // FragColor = vec4(result, 1.0);
 }

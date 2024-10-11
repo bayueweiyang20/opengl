@@ -196,8 +196,9 @@ int main() {
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // 清除深度测试
 
         ourShader.use(); // 激活着色程序
-        ourShader.setVec3("light.position", lightPos);
-        // ourShader.setVec3("light.direction", -0.2f, -1.0f, -0.3f);
+        ourShader.setVec3("light.position",  camera.Position);
+        ourShader.setVec3("light.direction", camera.Front);
+        ourShader.setFloat("light.cutOff",   glm::cos(glm::radians(12.5f)));
         ourShader.setVec3("viewPos", camera.Position);
         ourShader.setFloat("material.shininess", 32.0f);
         ourShader.setVec3("light.ambient",  0.2f, 0.2f, 0.2f);
